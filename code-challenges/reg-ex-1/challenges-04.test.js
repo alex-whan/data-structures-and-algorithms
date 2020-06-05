@@ -41,23 +41,9 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  let regex = /[0-9]/g;
+  return regex.test(input);
 };
-
-
-describe('Testing challenge 2', () => {
-  test('It should return true if the input is a number', () => {
-    expect(isNum(1234567890)).toBeTruthy();
-    expect(isNum('12345')).toBeTruthy();
-  });
-  test('It should return true if the input contains a number', () => {
-    expect(isNum('h3llo w0rld')).toBeTruthy();
-  });
-  test('It should return false if the input does not contain a number', () => {
-    expect(isNum('hello world')).toBeFalsy();
-    expect(isNum('')).toBeFalsy();
-  });
-});
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,6 +57,23 @@ Return an array containing all the matches.
 const isCapitalized = (str) => {
   // Solution code here...
 };
+
+
+describe('Testing challenge 3', () => {
+  test('It should only return words that begin with a capital letter', () => {
+    const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
+
+    expect(capitalResult).toStrictEqual([ 'We', 'Return', 'Words', 'With', 'Letter' ]);
+    expect(capitalResult.length).toStrictEqual(5);
+
+    expect(isCapitalized('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toStrictEqual(['Given', 'Runnymede', 'Windsor', 'Staines', 'June', 'May']);
+
+    expect(isCapitalized('these words are all failures')).toStrictEqual([]);
+  });
+});
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -163,21 +166,21 @@ describe('Testing challenge 1', () => {
   })
 });
 
-
-
-
-describe('Testing challenge 3', () => {
-  test('It should only return words that begin with a capital letter', () => {
-    const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
-
-    expect(capitalResult).toStrictEqual([ 'We', 'Return', 'Words', 'With', 'Letter' ]);
-    expect(capitalResult.length).toStrictEqual(5);
-
-    expect(isCapitalized('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toStrictEqual(['Given', 'Runnymede', 'Windsor', 'Staines', 'June', 'May']);
-
-    expect(isCapitalized('these words are all failures')).toStrictEqual([]);
+describe('Testing challenge 2', () => {
+  test('It should return true if the input is a number', () => {
+    expect(isNum(1234567890)).toBeTruthy();
+    expect(isNum('12345')).toBeTruthy();
+  });
+  test('It should return true if the input contains a number', () => {
+    expect(isNum('h3llo w0rld')).toBeTruthy();
+  });
+  test('It should return false if the input does not contain a number', () => {
+    expect(isNum('hello world')).toBeFalsy();
+    expect(isNum('')).toBeFalsy();
   });
 });
+
+
 
 describe('Testing challenge 4', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
