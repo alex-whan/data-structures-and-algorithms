@@ -55,25 +55,9 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let regex = /[A-Z][a-z]*/g;
+  return str.match(regex) || [];
 };
-
-
-describe('Testing challenge 3', () => {
-  test('It should only return words that begin with a capital letter', () => {
-    const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
-
-    expect(capitalResult).toStrictEqual([ 'We', 'Return', 'Words', 'With', 'Letter' ]);
-    expect(capitalResult.length).toStrictEqual(5);
-
-    expect(isCapitalized('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toStrictEqual(['Given', 'Runnymede', 'Windsor', 'Staines', 'June', 'May']);
-
-    expect(isCapitalized('these words are all failures')).toStrictEqual([]);
-  });
-});
-
-
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -84,6 +68,20 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 const citiesAtoJ = (arr) => {
   // Solution code here...
 };
+
+
+describe('Testing challenge 4', () => {
+  let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
+
+  test('It should return the cities whose names begin with the letters A through J', () => {
+    expect(citiesAtoJ(cities)).toContain('Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken');
+    expect(citiesAtoJ(cities).length).toStrictEqual(5);
+
+    expect(citiesAtoJ([])).toStrictEqual([]);
+    expect(citiesAtoJ(['Albuquerque', 'Chicago', 'Philadelphia', 'Newark', 'Sacramento', 'Eugene'])).toEqual(expect.arrayContaining(['Albuquerque', 'Chicago', 'Eugene']));
+  });
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -180,18 +178,20 @@ describe('Testing challenge 2', () => {
   });
 });
 
+describe('Testing challenge 3', () => {
+  test('It should only return words that begin with a capital letter', () => {
+    const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
+    expect(capitalResult).toStrictEqual([ 'We', 'Return', 'Words', 'With', 'Letter' ]);
+    expect(capitalResult.length).toStrictEqual(5);
 
-describe('Testing challenge 4', () => {
-  let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
+    expect(isCapitalized('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toStrictEqual(['Given', 'Runnymede', 'Windsor', 'Staines', 'June', 'May']);
 
-  test('It should return the cities whose names begin with the letters A through J', () => {
-    expect(citiesAtoJ(cities)).toContain('Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken');
-    expect(citiesAtoJ(cities).length).toStrictEqual(5);
-
-    expect(citiesAtoJ([])).toStrictEqual([]);
-    expect(citiesAtoJ(['Albuquerque', 'Chicago', 'Philadelphia', 'Newark', 'Sacramento', 'Eugene'])).toEqual(expect.arrayContaining(['Albuquerque', 'Chicago', 'Eugene']));
+    expect(isCapitalized('these words are all failures')).toStrictEqual([]);
   });
+});
+
+
 
   test('It should not return the cities whose names begin with the letters K through Z', () => {
     expect(citiesAtoJ(cities)).not.toContain('San Diego', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Newport Beach');
