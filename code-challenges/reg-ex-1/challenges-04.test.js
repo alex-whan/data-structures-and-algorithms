@@ -24,19 +24,9 @@ let $ = createSnippetWithJQuery(`
 
 
 const generateSubmitButton = () => {
-  let $button = $(`<button>Submit<button>`);
+  let $button = $(`<button>submit<button>`);
   $('section').append($button);
 }
-
-
-
-describe('Testing challenge 1', () => {
-  test('It should add a submit button to the DOM', () => {
-    generateSubmitButton();
-    expect($('button').text()).toStrictEqual('submit');
-  })
-});
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -53,6 +43,22 @@ For example:
 const isNum = (input) => {
   // Solution code here...
 };
+
+
+describe('Testing challenge 2', () => {
+  test('It should return true if the input is a number', () => {
+    expect(isNum(1234567890)).toBeTruthy();
+    expect(isNum('12345')).toBeTruthy();
+  });
+  test('It should return true if the input contains a number', () => {
+    expect(isNum('h3llo w0rld')).toBeTruthy();
+  });
+  test('It should return false if the input does not contain a number', () => {
+    expect(isNum('hello world')).toBeFalsy();
+    expect(isNum('')).toBeFalsy();
+  });
+});
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -150,20 +156,15 @@ Run your tests from the console: jest challenges-04.solution.test.js
 ------------------------------------------------------------------------------------------------ */
 
 
-
-describe('Testing challenge 2', () => {
-  test('It should return true if the input is a number', () => {
-    expect(isNum(1234567890)).toBeTruthy();
-    expect(isNum('12345')).toBeTruthy();
-  });
-  test('It should return true if the input contains a number', () => {
-    expect(isNum('h3llo w0rld')).toBeTruthy();
-  });
-  test('It should return false if the input does not contain a number', () => {
-    expect(isNum('hello world')).toBeFalsy();
-    expect(isNum('')).toBeFalsy();
-  });
+describe('Testing challenge 1', () => {
+  test('It should add a submit button to the DOM', () => {
+    generateSubmitButton();
+    expect($('button').text()).toStrictEqual('submit');
+  })
 });
+
+
+
 
 describe('Testing challenge 3', () => {
   test('It should only return words that begin with a capital letter', () => {
