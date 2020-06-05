@@ -22,9 +22,21 @@ let $ = createSnippetWithJQuery(`
 </section>
 `);
 
+
 const generateSubmitButton = () => {
-  // Solution code here...
+  let $button = $(`<button>Submit<button>`);
+  $('section').append($button);
 }
+
+
+
+describe('Testing challenge 1', () => {
+  test('It should add a submit button to the DOM', () => {
+    generateSubmitButton();
+    expect($('button').text()).toStrictEqual('submit');
+  })
+});
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -137,12 +149,7 @@ Run your tests from the console: jest challenges-04.solution.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
-  test('It should add a submit button to the DOM', () => {
-    generateSubmitButton();
-    expect($('button').text()).toStrictEqual('submit');
-  })
-});
+
 
 describe('Testing challenge 2', () => {
   test('It should return true if the input is a number', () => {
