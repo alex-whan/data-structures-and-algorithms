@@ -24,19 +24,9 @@ let $ = createSnippetWithJQuery(`
 
 
 const generateSubmitButton = () => {
-  let $button = $(`<button>Submit<button>`);
+  let $button = $(`<button>submit<button>`);
   $('section').append($button);
 }
-
-
-
-describe('Testing challenge 1', () => {
-  test('It should add a submit button to the DOM', () => {
-    generateSubmitButton();
-    expect($('button').text()).toStrictEqual('submit');
-  })
-});
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -51,8 +41,10 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  let regex = /[0-9]/g;
+  return regex.test(input);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -63,7 +55,8 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let regex = /[A-Z][a-z]*/g;
+  return str.match(regex) || [];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,7 +66,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let cityArray = [];
+  let regex = /^[A-J]/;
+  arr.forEach(city => {
+    if(regex.test(city)){
+      cityArray.push(city);
+    }
+  })
+  return cityArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,6 +150,12 @@ Run your tests from the console: jest challenges-04.solution.test.js
 ------------------------------------------------------------------------------------------------ */
 
 
+describe('Testing challenge 1', () => {
+  test('It should add a submit button to the DOM', () => {
+    generateSubmitButton();
+    expect($('button').text()).toStrictEqual('submit');
+  })
+});
 
 describe('Testing challenge 2', () => {
   test('It should return true if the input is a number', () => {
