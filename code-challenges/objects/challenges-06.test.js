@@ -125,25 +125,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
+  let hasChildren = false;
   arr.forEach(person => {
-    if(character.name === person.name && character.children.length > 0){
-      return true;
+    if(character === person.name){
+     if (Object.values(person)[2].length > 0){
+      hasChildren = true;
     } else {
-      return false;
+      hasChildren = false;
+      }
     }
-    // return Object.values(person.children) ? true : false;
-  })
+  });
+  return hasChildren;
 };
-
-describe('Testing challenge 4', () => {
-  test('It should return true for characters that have children', () => {
-    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
-  });
-
-  test('It should return false to characters who do not have children', () => {
-    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
-  });
-});
 
 
 
@@ -241,7 +234,15 @@ describe('Testing challenge 3', () => {
   });
 });
 
+describe('Testing challenge 4', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
+  });
 
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+  });
+});
 
 describe('Testing challenge 5', () => {
   test('It should return true for characters that have children', () => {
