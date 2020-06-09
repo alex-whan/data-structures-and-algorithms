@@ -112,15 +112,6 @@ const getHouses = (arr) => {
   return houses;
 };
 
-describe('Testing challenge 3', () => {
-  test('It should return an array of the names of the houses', () => {
-    expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
-    expect(getHouses(characters).length).toStrictEqual(7);
-  });
-});
-
-
-
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -134,9 +125,27 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  arr.forEach(person => {
+    if(character.name === person.name && character.children.length > 0){
+      return true;
+    } else {
+      return false;
+    }
+    // return Object.values(person.children) ? true : false;
+  })
 };
+
+describe('Testing challenge 4', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
+  });
+
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+  });
+});
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -225,17 +234,14 @@ describe('Testing challenge 2', () => {
   });
 });
 
-
-
-describe('Testing challenge 4', () => {
-  test('It should return true for characters that have children', () => {
-    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
-  });
-
-  test('It should return false to characters who do not have children', () => {
-    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+describe('Testing challenge 3', () => {
+  test('It should return an array of the names of the houses', () => {
+    expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
+    expect(getHouses(characters).length).toStrictEqual(7);
   });
 });
+
+
 
 describe('Testing challenge 5', () => {
   test('It should return true for characters that have children', () => {
