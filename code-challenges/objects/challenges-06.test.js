@@ -106,9 +106,20 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  characters.forEach(person => {
+    houses.push(person.house);
+  })
   return houses;
 };
+
+describe('Testing challenge 3', () => {
+  test('It should return an array of the names of the houses', () => {
+    expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
+    expect(getHouses(characters).length).toStrictEqual(7);
+  });
+});
+
+
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -214,12 +225,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
-  test('It should return an array of the names of the houses', () => {
-    expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
-    expect(getHouses(characters).length).toStrictEqual(7);
-  });
-});
+
 
 describe('Testing challenge 4', () => {
   test('It should return true for characters that have children', () => {
