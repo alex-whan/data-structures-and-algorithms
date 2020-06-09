@@ -70,8 +70,29 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  // Solution code here...
+  let template = $('#template').html();
+  let templateStringsArray = [];
+  characters.forEach(person => {
+    templateStringsArray.push(Mustache.render(template, 
+      {name: person.name,
+        spouse: person.spouse,
+        children: person.children,
+        house: person.house
+      }))
+  })
+  return templateStringsArray;
 };
+
+
+describe('Testing challenge 1', () => {
+  test('It should return html markup with the character', () => {
+    const filledTemplates = templatingWithMustache();
+    const $ = cheerio.load(filledTemplates[0]);
+    expect($('h2').text()).toStrictEqual('Eddard');
+  });
+});
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -191,13 +212,7 @@ Run your tests from the console: jest challenges-06.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
-  test('It should return html markup with the character', () => {
-    const filledTemplates = templatingWithMustache();
-    const $ = cheerio.load(filledTemplates[0]);
-    expect($('h2').text()).toStrictEqual('Eddard');
-  });
-});
+
 
 describe('Testing challenge 2', () => {
   test('It should return the keys from an object', () => {
