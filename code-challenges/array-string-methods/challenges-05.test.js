@@ -133,16 +133,44 @@ const gruffaloCrumble = {
 };
 
 
+// const listFoods = (recipe) => {
+//   let result = [];
+//   recipe.ingredients.forEach(str => {
+//     str = str.slice(5,str.length);
+//     let indexedString = str.indexOf(' ') + 1;
+//     let slicedString = str.slice(indexedString, str.length);
+//     result.push(slicedString);
+//   })
+//   return result;
+// };
+
+// Don't care about number or the space
+// Next word is a unit/size followed by a space - don't care about those either
+// only care about words after the second space - essentially
+// Slice - can slice at one index and it'll return the rest of the string (if only one parameter)
+// Need to find where the second space is - and slice there (So it returns everything) after the second space (i.e. removes the units)
+// Do it with TWO slices - slice at the first space, then take THAT string and slice at it's first space (so it always removes everything before the second space):
+
+// ALTERNATIVE:
+
 const listFoods = (recipe) => {
   let result = [];
-  recipe.ingredients.forEach(str => {
-    str = str.slice(5,str.length);
-    let indexedString = str.indexOf(' ') + 1;
-    let slicedString = str.slice(indexedString, str.length);
-    result.push(slicedString);
+
+  recipe.ingredients.forEach(ingredient => {
+    // finds the first space (cuts off the numbers)
+    let firstIndex = ingredient.indexOf(' ');
+    let secondStr = ingredient.slice(firstIndex + 1); //slice after first space
+
+    // cut off the units and restart indexOf with remaining string
+    let secondIdx = secondStr.indexOf(' '); // find second space
+    let finalStr = secondStr.slice(secondIdx + 1); // Slice second string after second space - to leave us with original string sliced after the SECOND space
+    
+    result.push(finalStr);
   })
   return result;
-};
+}
+
+
 
 
 /* ------------------------------------------------------------------------------------------------
