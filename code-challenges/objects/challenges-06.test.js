@@ -83,17 +83,6 @@ const templatingWithMustache = () => {
   return templateStringsArray;
 };
 
-
-describe('Testing challenge 1', () => {
-  test('It should return html markup with the character', () => {
-    const filledTemplates = templatingWithMustache();
-    const $ = cheerio.load(filledTemplates[0]);
-    expect($('h2').text()).toStrictEqual('Eddard');
-  });
-});
-
-
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -106,9 +95,8 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
   finalExam: true
 };
 
-const getCourseKeys = (obj) => {
-  // Solution code here...
-};
+const getCourseKeys = obj => Object.keys(obj)
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -212,7 +200,13 @@ Run your tests from the console: jest challenges-06.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-
+describe('Testing challenge 1', () => {
+  test('It should return html markup with the character', () => {
+    const filledTemplates = templatingWithMustache();
+    const $ = cheerio.load(filledTemplates[0]);
+    expect($('h2').text()).toStrictEqual('Eddard');
+  });
+});
 
 describe('Testing challenge 2', () => {
   test('It should return the keys from an object', () => {
