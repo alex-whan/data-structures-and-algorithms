@@ -50,19 +50,12 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  // Solution code here...
+  let newArray = [];
+  arr.forEach(value => {
+    newArray.push(Math.pow(2, value));
+  })
+  return newArray;
 };
-
-describe('Testing challenge 3', () => {
-  test('It should return two raised to the power of the integer', () => {
-    expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
-    expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
-  });
-
-  test('It should return decimals if the integer is negative', () => {
-    expect(forEachTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
-  });
-});
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -74,6 +67,18 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 const mapTwoToThe = (arr) => {
   // Solution code here...
 };
+
+describe('Testing challenge 4', () => {
+  test('It should return two raised to the power of the integer', () => {
+    expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
+  });
+
+  test('It should return decimals if the integer is negative', () => {
+    expect(mapTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+  });
+});
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -225,18 +230,18 @@ describe('Testing challenge 2', () => {
   });
 });
 
-
-
-describe('Testing challenge 4', () => {
+describe('Testing challenge 3', () => {
   test('It should return two raised to the power of the integer', () => {
-    expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
-    expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
+    expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
   test('It should return decimals if the integer is negative', () => {
-    expect(mapTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+    expect(forEachTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
+
+
 
 describe('Testing challenge 5', () => {
   test('It should return an array containing the character code for each letter', () => {
