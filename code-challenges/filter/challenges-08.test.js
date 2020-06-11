@@ -22,8 +22,34 @@ const createServer = () => {
 
 
 function sayHello(request, response){
-  // Solution code here...
+      response.send('Hello from the back-end');
 }
+
+describe('Testing challenge 1', () => {
+
+  const request = require('supertest');
+
+  let server;
+
+  beforeEach(function () {
+    server = createServer();
+  });
+
+  afterEach(function () {
+    server.close();
+  });
+
+  test('responds to /hello', function testSlash(done) {
+    request(server)
+      .get('/hello')
+      .expect(200, done);
+  });
+  test('404 everything else', function testPath(done) {
+    request(server)
+      .get('/foo/bar')
+      .expect(404, done);
+  });
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -196,31 +222,7 @@ Run your tests from the console: jest challenges-08.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
 
-  const request = require('supertest');
-
-  let server;
-
-  beforeEach(function () {
-    server = createServer();
-  });
-
-  afterEach(function () {
-    server.close();
-  });
-
-  test('responds to /hello', function testSlash(done) {
-    request(server)
-      .get('/hello')
-      .expect(200, done);
-  });
-  test('404 everything else', function testPath(done) {
-    request(server)
-      .get('/foo/bar')
-      .expect(404, done);
-  });
-});
 
 describe('Testing challenge 2', () => {
   test('It should return an array containing only odd integers', () => {
