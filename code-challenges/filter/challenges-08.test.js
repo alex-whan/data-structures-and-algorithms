@@ -110,8 +110,20 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  return arr.filter(value => value.baseStat > minBaseStat);
 };
+
+describe('Testing challenge 5', () => {
+  test('It should return an array containing the stats that are greater than the input', () => {
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 110)).toStrictEqual([]);
+  });
+  test('It should work for non-Snorlax data', () => {
+    expect(getBaseStatGreaterThan([{baseStat: 10}, {baseStat: -85}, {baseStat: 0}, {baseStat: -50}], -60)).toStrictEqual([{baseStat: 10}, {baseStat: 0}, {baseStat: -50}]);
+  });
+});
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
@@ -273,16 +285,6 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
-  test('It should return an array containing the stats that are greater than the input', () => {
-    expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
-    expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
-    expect(getBaseStatGreaterThan(snorlaxData.stats, 110)).toStrictEqual([]);
-  });
-  test('It should work for non-Snorlax data', () => {
-    expect(getBaseStatGreaterThan([{baseStat: 10}, {baseStat: -85}, {baseStat: 0}, {baseStat: -50}], -60)).toStrictEqual([{baseStat: 10}, {baseStat: 0}, {baseStat: -50}]);
-  });
-});
 
 describe('Testing challenge 6', () => {
   test('It should return the name of the stats that exceed that maximum', () => {
