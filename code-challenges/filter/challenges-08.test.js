@@ -25,31 +25,7 @@ function sayHello(request, response){
       response.send('Hello from the back-end');
 }
 
-describe('Testing challenge 1', () => {
 
-  const request = require('supertest');
-
-  let server;
-
-  beforeEach(function () {
-    server = createServer();
-  });
-
-  afterEach(function () {
-    server.close();
-  });
-
-  test('responds to /hello', function testSlash(done) {
-    request(server)
-      .get('/hello')
-      .expect(200, done);
-  });
-  test('404 everything else', function testPath(done) {
-    request(server)
-      .get('/foo/bar')
-      .expect(404, done);
-  });
-});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -60,8 +36,22 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  let newArr = arr.filter(value => value % 2 !== 0);
+  return newArr;
 };
+
+
+
+describe('Testing challenge 2', () => {
+  test('It should return an array containing only odd integers', () => {
+    expect(oddValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 3, 5, 7, 9]);
+    expect(oddValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(5);
+    expect(oddValues([2,3,4,179])).toStrictEqual([3,179]);
+    expect(oddValues([2,4,6,8])).toStrictEqual([]);
+  });
+});
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -222,16 +212,33 @@ Run your tests from the console: jest challenges-08.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
+describe('Testing challenge 1', () => {
 
+  const request = require('supertest');
 
-describe('Testing challenge 2', () => {
-  test('It should return an array containing only odd integers', () => {
-    expect(oddValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 3, 5, 7, 9]);
-    expect(oddValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(5);
-    expect(oddValues([2,3,4,179])).toStrictEqual([3,179]);
-    expect(oddValues([2,4,6,8])).toStrictEqual([]);
+  let server;
+
+  beforeEach(function () {
+    server = createServer();
+  });
+
+  afterEach(function () {
+    server.close();
+  });
+
+  test('responds to /hello', function testSlash(done) {
+    request(server)
+      .get('/hello')
+      .expect(200, done);
+  });
+  test('404 everything else', function testPath(done) {
+    request(server)
+      .get('/foo/bar')
+      .expect(404, done);
   });
 });
+
+
 
 describe('Testing challenge 3', () => {
   test('It should return an array containing only words that have vowels', () => {
