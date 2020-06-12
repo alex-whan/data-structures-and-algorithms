@@ -194,11 +194,6 @@ const countNumberOfElements = (arr) => {
   return totalElements;
 };
 
-describe('Testing challenge 2', () => {
-  test('It should return the length of the array', () => {
-    expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
-  });
-});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -257,8 +252,14 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let names = arr.reduce((answerSoFar, value, index) => {
+    answerSoFar.push(value.name);
+    return answerSoFar;
+  }, []);
+  return names;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -271,6 +272,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 const reversedString = (str) => {
   // Solution code here...
 };
+
+describe('Testing challenge 4', () => {
+  test('It should return the string with the characters in reverse order', () => {
+    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
+  });
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -458,7 +465,11 @@ describe('Testing challenge 1', () => {
   });
 });
 
-
+describe('Testing challenge 2', () => {
+  test('It should return the length of the array', () => {
+    expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
+  });
+});
 
 describe('Testing challenge 3', () => {
   test('It should return an array continaing the names of the characters', () => {
@@ -467,11 +478,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
-  test('It should return the string with the characters in reverse order', () => {
-    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
-  });
-});
+
 
 describe('Testing challenge 5', () => {
   test('It should return the total number of children', () => {
