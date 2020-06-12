@@ -270,14 +270,13 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let splitStr = str.split('');
+  let newString = splitStr.reduce((answerSoFar, value) => {
+    return value + answerSoFar;
+  })
+  return newString;
 };
 
-describe('Testing challenge 4', () => {
-  test('It should return the string with the characters in reverse order', () => {
-    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
-  });
-});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -478,7 +477,11 @@ describe('Testing challenge 3', () => {
   });
 });
 
-
+describe('Testing challenge 4', () => {
+  test('It should return the string with the characters in reverse order', () => {
+    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
+  });
+});
 
 describe('Testing challenge 5', () => {
   test('It should return the total number of children', () => {
