@@ -177,38 +177,6 @@ function Event(obj){
   this.title = obj.title;
 }
 
-describe('Testing challenge 1', () => {
-  test('It should return an array of object instances with a key of author', () => {
-    expect(mapCurrentEvents()[0].author).toStrictEqual("go");
-  });
-
-  test('It should return an array of object instances with a key of categories', () => {
-    expect(mapCurrentEvents()[0].categories).toStrictEqual(["world"]);
-  });
-  const request = require('supertest');
-
-  let server;
-
-  beforeEach(function () {
-    server = createServer();
-  });
-
-  afterEach(function () {
-    server.close();
-  });
-
-  test('responds to /events', function testSlash(done) {
-    request(server)
-      .get('/events')
-      .expect(200, done);
-  });
-
-  test('404 everything else', function testPath(done) {
-    request(server)
-      .get('/foo/bar')
-      .expect(404, done);
-  });
-});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -219,8 +187,18 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  let totalElements = arr.reduce((answerSoFar) => {
+    answerSoFar++;
+    return answerSoFar;
+  }, 0);
+  return totalElements;
 };
+
+describe('Testing challenge 2', () => {
+  test('It should return the length of the array', () => {
+    expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
+  });
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -447,13 +425,40 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
+describe('Testing challenge 1', () => {
+  test('It should return an array of object instances with a key of author', () => {
+    expect(mapCurrentEvents()[0].author).toStrictEqual("go");
+  });
 
+  test('It should return an array of object instances with a key of categories', () => {
+    expect(mapCurrentEvents()[0].categories).toStrictEqual(["world"]);
+  });
+  const request = require('supertest');
 
-describe('Testing challenge 2', () => {
-  test('It should return the length of the array', () => {
-    expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
+  let server;
+
+  beforeEach(function () {
+    server = createServer();
+  });
+
+  afterEach(function () {
+    server.close();
+  });
+
+  test('responds to /events', function testSlash(done) {
+    request(server)
+      .get('/events')
+      .expect(200, done);
+  });
+
+  test('404 everything else', function testPath(done) {
+    request(server)
+      .get('/foo/bar')
+      .expect(404, done);
   });
 });
+
+
 
 describe('Testing challenge 3', () => {
   test('It should return an array continaing the names of the characters', () => {
