@@ -25,8 +25,8 @@ const createServer = () => {
   const express=require('express');
   const app=express();
 
-  // Routes go here
-  // Solution code here...
+  // Event route
+  app.get('/events', getCurrentEvents);
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -160,16 +160,23 @@ const currentEvents = {
 }
 
 function getCurrentEvents(request, response){
-  // Solution code here...
+  response.send(mapCurrentEvents());
 }
 
 const mapCurrentEvents = () => {
-  // Solution code here...
+  let eventsArray = currentEvents.news.map(story => new Event(story));
+  return eventsArray;
 }
 
 function Event(obj){
-  // Solution code here...
+  this.author = obj.author;
+  this.categories = obj.category;
+  this.summary = obj.description;
+  this.img_url = obj.image;
+  this.date = obj.published;
+  this.title = obj.title;
 }
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -180,8 +187,13 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  let totalElements = arr.reduce((answerSoFar) => {
+    answerSoFar++;
+    return answerSoFar;
+  }, 0);
+  return totalElements;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -240,8 +252,14 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let names = arr.reduce((answerSoFar, value, index) => {
+    answerSoFar.push(value.name);
+    return answerSoFar;
+  }, []);
+  return names;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -252,8 +270,13 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let splitStr = str.split('');
+  let newString = splitStr.reduce((answerSoFar, value) => {
+    return value + answerSoFar;
+  })
+  return newString;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
