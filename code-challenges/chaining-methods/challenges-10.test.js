@@ -79,15 +79,6 @@ const totalSum = (input) => {
 };
 
 
-describe('Testing challenge 3', () => {
-  test('It should add all the numbers in the arrays', () => {
-    const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
-
-    expect(totalSum(nums)).toStrictEqual(66);
-  });
-});
-
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -101,7 +92,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  return input.map(array => {
+    return array.reduce((answerSoFar, value) => {
+      if(value % 5 === 0 && typeof(value) === 'number'){
+        let raisedNumber = Math.pow(2, value);
+        answerSoFar.push(raisedNumber);
+        return answerSoFar;
+      } else {
+        return answerSoFar;
+      }
+    }, []);
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -242,7 +243,13 @@ describe('Testing challenge 2', () => {
   });
 });
 
+describe('Testing challenge 3', () => {
+  test('It should add all the numbers in the arrays', () => {
+    const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
 
+    expect(totalSum(nums)).toStrictEqual(66);
+  });
+});
 
 describe('Testing challenge 4', () => {
   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
