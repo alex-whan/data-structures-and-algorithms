@@ -44,8 +44,30 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let count = 0;
+
+  input.filter(value => {
+    value.filter(number => {
+      if(target === number){
+      count++;
+    }
+    }) 
+  })
+  
+  return count;  
 };
+
+describe('Testing challenge 2', () => {
+  test('It should return the number of times the input is in the nested arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
+    expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
+    expect(count(12, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(0);
+  });
+  test('It should work on empty arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [], [5, 5, 5], [1, 2, 3], []])).toStrictEqual(4);
+    expect(count(5, [])).toStrictEqual(0);
+  });
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -203,17 +225,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe('Testing challenge 2', () => {
-  test('It should return the number of times the input is in the nested arrays', () => {
-    expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
-    expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
-    expect(count(12, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(0);
-  });
-  test('It should work on empty arrays', () => {
-    expect(count(5, [[1, 3, 5, 7, 9], [], [5, 5, 5], [1, 2, 3], []])).toStrictEqual(4);
-    expect(count(5, [])).toStrictEqual(0);
-  });
-});
+
 
 describe('Testing challenge 3', () => {
   test('It should add all the numbers in the arrays', () => {
