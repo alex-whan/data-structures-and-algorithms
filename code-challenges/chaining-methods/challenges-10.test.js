@@ -7,7 +7,24 @@ Build a simple express server. Connect a '/hello' route that sends a greeting of
 ------------------------------------------------------------------------------------------------ */
 
 const createServer = () => {
-  // Solution code here...
+  const express = require('express');
+  const app = express();
+
+  app.get('/hello', (request, response) => {
+    response.status(200).send('Hello meteor!');
+  })
+
+  app.get('/aboutme', (request, response) => {
+    response.status(200).send('This is my bio.');
+  })
+
+  app.get('/favoritefoods', (request, response) => {
+    response.status(200).send('[sushi, udon, pizza, snickerdoodles]');
+  })
+
+  app.get('*', (request, response) => {
+    response.status(404).send('Sorry, this route does not exist.');
+  })
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
