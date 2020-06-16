@@ -12,7 +12,11 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-  // Solution code here...
+  let newArray = [];
+  people.map(person => {
+    return newArray.push(`${person.firstName} ${person.lastName}`);
+  })
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,6 +108,7 @@ describe('Testing challenge 1', () => {
 
   });
 });
+
 
 describe('Testing challenge 2', () => {
   test('It should validate a PIN of exactly four digits', () => {
