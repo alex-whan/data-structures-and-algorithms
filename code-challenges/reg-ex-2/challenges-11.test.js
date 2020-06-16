@@ -32,18 +32,6 @@ const validatePin = (pin) => {
   return regex.test(pin);
 };
 
-describe('Testing challenge 2', () => {
-  test('It should validate a PIN of exactly four digits', () => {
-    expect(validatePin(1234)).toBeTruthy();
-    expect(validatePin(123)).toBeFalsy();
-    expect(validatePin(12345)).toBeFalsy();
-    expect(validatePin('abcd')).toBeFalsy();
-    expect(validatePin('7890')).toBeTruthy();
-    expect(validatePin('0789')).toBeTruthy();
-    expect(validatePin(789)).toBeFalsy();
-    expect(validatePin('0000')).toBeTruthy();
-  });
-});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -123,7 +111,18 @@ describe('Testing challenge 1', () => {
   });
 });
 
-
+describe('Testing challenge 2', () => {
+  test('It should validate a PIN of exactly four digits', () => {
+    expect(validatePin(1234)).toBeTruthy();
+    expect(validatePin(123)).toBeFalsy();
+    expect(validatePin(12345)).toBeFalsy();
+    expect(validatePin('abcd')).toBeFalsy();
+    expect(validatePin('7890')).toBeTruthy();
+    expect(validatePin('0789')).toBeTruthy();
+    expect(validatePin(789)).toBeFalsy();
+    expect(validatePin('0000')).toBeTruthy();
+  });
+});
 
 describe('Testing challenge 3', () => {
   test('It should match a basic email', () => {
