@@ -39,8 +39,14 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   let totalCookieSalesArray = [];
-
-
+  for(let i = 0; i < hoursOpen.length; i++){
+    let cookieCounter = 0;
+    for (let j = 0; j < stores.length; j++){
+      cookieCounter += stores[j][i];
+    }
+    totalCookieSalesArray.push(cookieCounter);
+  }
+  return totalCookieSalesArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
