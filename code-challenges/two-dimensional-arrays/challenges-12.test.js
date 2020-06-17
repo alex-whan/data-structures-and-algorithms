@@ -68,28 +68,6 @@ const salesData = (hours, data) => {
   return salesDataArray;
 };
 
-describe('Testing challenge 3', () => {
-  test('It should create an object of data for each store', () => {
-    expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
-      { sales: '88 cookies', time: '9 a.m.' },
-      { sales: '153 cookies', time: '10 a.m.' },
-      { sales: '252 cookies', time: '11 a.m.' },
-      { sales: '286 cookies', time: '12 p.m.' },
-      { sales: '139 cookies', time: '1 p.m.' },
-      { sales: '161 cookies', time: '2 p.m.' },
-      { sales: '145 cookies', time: '3 p.m.' },
-      { sales: '232 cookies', time: '4 p.m.' },
-      { sales: '276 cookies', time: '5 p.m.' },
-      { sales: '207 cookies', time: '6 p.m.' },
-      { sales: '161 cookies', time: '7 p.m.' },
-      { sales: '169 cookies', time: '8 p.m.' }
-    ]);
-
-    expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
-  });
-});
-
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -112,8 +90,18 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr.reduce((answerSoFar, store) => {
+    store.items.map(item => {
+      if(item.name === 'Treats'){
+        answerSoFar += item.quantity;
+      } else {
+        return answerSoFar;
+      }
+    }) 
+    return answerSoFar;
+  }, 0)
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -232,13 +220,33 @@ describe('Testing challenge 2', () => {
   });
 });
 
+describe('Testing challenge 3', () => {
+  test('It should create an object of data for each store', () => {
+    expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
+      { sales: '88 cookies', time: '9 a.m.' },
+      { sales: '153 cookies', time: '10 a.m.' },
+      { sales: '252 cookies', time: '11 a.m.' },
+      { sales: '286 cookies', time: '12 p.m.' },
+      { sales: '139 cookies', time: '1 p.m.' },
+      { sales: '161 cookies', time: '2 p.m.' },
+      { sales: '145 cookies', time: '3 p.m.' },
+      { sales: '232 cookies', time: '4 p.m.' },
+      { sales: '276 cookies', time: '5 p.m.' },
+      { sales: '207 cookies', time: '6 p.m.' },
+      { sales: '161 cookies', time: '7 p.m.' },
+      { sales: '169 cookies', time: '8 p.m.' }
+    ]);
 
+    expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
+  });
+});
 
 describe('Testing challenge 4', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
 });
+
 
 describe('Testing challenge 5', () => {
   const battleshipData = [
