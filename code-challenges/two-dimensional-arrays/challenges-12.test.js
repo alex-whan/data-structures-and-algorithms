@@ -9,7 +9,10 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  // Solution code here...
+  let biggestNumber = arr.reduce((answerSoFar, value) => {
+    return (value > answerSoFar) ? value : answerSoFar;
+  });
+  return biggestNumber;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,7 +38,8 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+  let totalCookieSalesArray = [];
+
 
 };
 
