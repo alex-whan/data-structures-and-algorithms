@@ -32,7 +32,11 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  // Solution code here...
+  let firstLetterArray = [];
+  arr.map(word => {
+    firstLetterArray.push(word[0]);
+  })
+  return firstLetterArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +50,17 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 const findHappiness = (arr) => {
   // Solution code here...
 };
+
+describe('Testing challenge 3', () => {
+  test('It should return only the strings that contain smiley faces', () => {
+    const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
+
+    expect(findHappiness(words)).toStrictEqual(['apple (:)', ':)banana', 'cant:)aloupe']);
+    expect(findHappiness([])).toStrictEqual([]);
+    expect(findHappiness(['sadness'])).toStrictEqual([]);
+    expect(findHappiness([':) yay', ':( no', '', '', '', ''])).toStrictEqual([':) yay']);
+  });
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -185,16 +200,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
-  test('It should return only the strings that contain smiley faces', () => {
-    const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
 
-    expect(findHappiness(words)).toStrictEqual(['apple (:)', ':)banana', 'cant:)aloupe']);
-    expect(findHappiness([])).toStrictEqual([]);
-    expect(findHappiness(['sadness'])).toStrictEqual([]);
-    expect(findHappiness([':) yay', ':( no', '', '', '', ''])).toStrictEqual([':) yay']);
-  });
-});
 
 describe('Testing challenge 4', () => {
   test('It should return a standardized set of phone numbers', () => {
