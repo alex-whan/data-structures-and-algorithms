@@ -20,7 +20,7 @@ const $ = createSnippetWithJQuery(`
 `);
 
 const fixTheTypo = () => {
-// Solution code here...
+  $('.pear').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -32,7 +32,11 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  // Solution code here...
+  let firstLetterArray = [];
+  arr.map(word => {
+    firstLetterArray.push(word[0]);
+  })
+  return firstLetterArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,8 +48,15 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  // Solution code here...
+  let smileyWords = [];
+  arr.forEach(string => {
+    if(string.includes(':)')){
+      smileyWords.push(string);
+  }})
+  return smileyWords;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -56,8 +67,13 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  let phoneString = arr.map(phoneNumber => {
+    return phoneNumber.substring(1, 4) + phoneNumber.substring(6, 9) + phoneNumber.substring(10, 15);
+  });
+return phoneString;
+ 
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
