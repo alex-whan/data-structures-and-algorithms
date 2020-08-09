@@ -1,5 +1,7 @@
 'use strict';
 
+const { response } = require('express');
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -12,7 +14,17 @@ const createServer = () => {
   const express = require('express');
   const app = express();
 
-  // solution code goes here ...
+  app.get('/', (req, res) => {
+    res.sendStatus(200);
+  })
+
+  app.delete('/things/1', (req, res) => {
+    res.sendStatus(405);
+  })
+
+  app.use('*', (req, res) => {
+    res.sendStatus(404);
+  })
 
   var server = app.listen(3000, function () {
     var port = server.address().port;
@@ -122,9 +134,7 @@ Here is an example of the input:
 This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBy = (property, arr) => {
-  // Solution code here...
-};
+const sortBy = (property, arr) => arr.sort((a, b) => a[property] < b[property] ? -1 : 1)
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
