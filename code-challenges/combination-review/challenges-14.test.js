@@ -42,10 +42,11 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  let capitalizedArr = arr.map((item) => {
-    item.charAt(0).toUpperCase + item.slice(1);
+  let capitalizedArr = [];
+  arr.map((item) => {
+    let capitalizedItem = item[0].toUpperCase() + item.slice(1);
+    capitalizedArr.push(capitalizedItem);
   });
-
   return capitalizedArr;
 };
 
