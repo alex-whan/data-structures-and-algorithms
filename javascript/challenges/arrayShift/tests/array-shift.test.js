@@ -18,7 +18,7 @@ it('should not modify the original', () => {
   expect(startArray.length).toBe(6); // need to be explicit here and hard-code this
 });
 
-it.skip('should have item added in correct spot', () => {
+it('should have item added in correct spot', () => {
   const startArray = ['x', 'x', 'x', 'x', 'x', 'x'];
   const resultArray = insertShiftArray(startArray, 'y');
   expect(resultArray[3]).toBe('y');
