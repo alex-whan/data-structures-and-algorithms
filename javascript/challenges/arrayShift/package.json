@@ -1,0 +1,21 @@
+{
+  "name": "arrayShift",
+  "version": "1.0.0",
+  "description": "",
+  "main": "arrayShift.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^26.3.0"
+  }
+}
