@@ -7,7 +7,7 @@ describe('testing the binarySearch function', () => {
 
   it('should not modify the original array', () => {
     const startArray = [10, 12, 16, 21, 35];
-    expect(startArray.length).toBe(5); // need to be explicit here and hard-code this
+    expect(startArray.length).toBe(5);
   });
 
   it('returns an index if number exists within an array with an odd number of elements', () => {
@@ -20,8 +20,18 @@ describe('testing the binarySearch function', () => {
     expect(binarySearch(startArray, 12)).toBe(1);
   });
 
-  it('returns -1 if number does not exist within array', () => {
+  it('returns -1 if number does not exist within an odd-numbered array', () => {
     const startArray = [10, 12, 16, 21, 35, 68, 89];
     expect(binarySearch(startArray, 77)).toBe(-1);
+  });
+
+  it('returns -1 if number does not exist within an even-numbered array', () => {
+    const startArray = [10, 12, 16, 35, 68, 89];
+    expect(binarySearch(startArray, 77)).toBe(-1);
+  });
+
+  it('returns an index in an array of two elements', () => {
+    const startArray = [10, 12];
+    expect(binarySearch(startArray, 12)).toBe(1);
   });
 });
