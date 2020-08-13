@@ -1,22 +1,17 @@
 const binarySearch = (arr, num) => {
-  let middleIndex = Math.floor((arr.length - 1) / 2);
-
   let firstIndex = 0;
   let lastIndex = arr.length - 1;
 
-  while (arr[middleIndex] !== num) {
-    if (arr[middleIndex] > num) {
-      lastIndex = middleIndex;
-      middleIndex = Math.floor(lastIndex - firstIndex / 2);
-    } else if (arr[middleIndex] < num) {
-      firstIndex = middleIndex;
-      middleIndex = Math.floor((lastIndex - firstIndex) / 2) + firstIndex;
-    }
+  while (firstIndex <= lastIndex) {
+    let middleIndex = Math.floor((firstIndex + lastIndex) / 2);
 
-    if (firstIndex >= lastIndex) {
-      return -1;
+    if (arr[middleIndex] === num) {
+      return middleIndex;
+    } else if (arr[middleIndex] < num) {
+      firstIndex = middleIndex + 1;
+    } else {
+      lastIndex = middleIndex - 1;
     }
   }
-
-  return middleIndex;
+  return -1;
 };
