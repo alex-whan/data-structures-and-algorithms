@@ -20,7 +20,7 @@ it('head property points to first node in the list', () => {
   const ll = new LinkedList();
   ll.insert('cookies');
   ll.insert('cream');
-  expect(ll.head.value).toBe('cream'); // This isn't right
+  expect(ll.head.value).toBe('cream');
 });
 
 // Can properly insert multiple nodes into the linked list
@@ -29,10 +29,18 @@ it('insert() properly adds multiple nodes to a list', () => {
   ll.insert('cookies');
   ll.insert('cream');
   ll.insert('brownies');
-  expect(ll.head.value).toBe('brownies');
+  expect(ll.head.next.value).toBe('cream');
 });
 
 // Will return true when finding a value within the linked list that exists
+it('includes() returns true when finding a value within the list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insert('pie');
+  expect(ll.includes('brownies')).toBe(true);
+});
 
 // Will return false when searching for a value in the linked list that does not exist
 

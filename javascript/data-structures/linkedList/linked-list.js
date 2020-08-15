@@ -1,9 +1,10 @@
 // Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node.
 
 class Node {
-  constructor(value) {
+  constructor(value, next = null) {
+    // default value if no next
     this.value = value;
-    this.next = null;
+    this.next = next;
   }
 }
 
@@ -19,9 +20,17 @@ class LinkedList {
     this.head = new Node(value, this.head);
   }
 
-  includes(value) {}
-
   // Define a method called includes which takes any value as an argument and returns a boolean result depending on whether that value exists as a Node’s value somewhere within the list.
+  includes(value) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
 }
 
 // Define a method called toString which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
