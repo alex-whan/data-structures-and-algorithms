@@ -31,11 +31,25 @@ class LinkedList {
     }
     return false;
   }
+
+  // Define a method called toString which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
+
+  // "{ a } -> { b } -> { c } -> NULL"
+  toString() {
+    let stringArray = [];
+    let currentNode = this.head;
+    while (currentNode.next) {
+      stringArray.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    stringArray.push(currentNode.value);
+    let nodeMap = stringArray.map((node) => {
+      let mappedNode = `{ ${node.value} } -> `;
+      mappedNode.join();
+    });
+    return console.log(`${nodeMap} -> NULL`);
+  }
 }
-
-// Define a method called toString which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
-
-// "{ a } -> { b } -> { c } -> NULL"
 
 // Any exceptions or errors that come from your code should be semantic, capturable errors. For example, rather than a default error thrown by your language, your code should raise/throw a custom, semantic error that describes what went wrong in calling the methods you wrote for this lab.
 
