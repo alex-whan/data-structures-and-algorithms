@@ -34,7 +34,7 @@ class LinkedList {
 
   // Define a method called toString which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
 
-  '{ a } -> { b } -> { c } -> NULL';
+  // '{ a } -> { b } -> { c } -> NULL';
   toString() {
     let nodeMap = '';
     let currentNode = this.head;
