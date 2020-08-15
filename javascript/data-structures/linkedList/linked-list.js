@@ -34,20 +34,16 @@ class LinkedList {
 
   // Define a method called toString which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
 
-  // "{ a } -> { b } -> { c } -> NULL"
+  '{ a } -> { b } -> { c } -> NULL';
   toString() {
-    let stringArray = [];
+    let nodeMap = '';
     let currentNode = this.head;
     while (currentNode.next) {
-      stringArray.push(currentNode.value);
+      nodeMap += `{ ${currentNode.value} } -> `;
       currentNode = currentNode.next;
     }
-    stringArray.push(currentNode.value);
-    let nodeMap = stringArray.map((node) => {
-      let mappedNode = `{ ${node.value} } -> `;
-      mappedNode.join();
-    });
-    return console.log(`${nodeMap} -> NULL`);
+    nodeMap += `{ ${currentNode.value} } -> `;
+    return `${nodeMap}NULL`;
   }
 }
 

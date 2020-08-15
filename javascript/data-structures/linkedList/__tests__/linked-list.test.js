@@ -53,3 +53,12 @@ it('includes() returns false when value is not found within the list', () => {
 });
 
 // Can properly return a collection of all the values that exist in the linked list
+it('toString() properly returns a collection of all values in linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  expect(ll.toString()).toBe(
+    '{ brownies } -> { cream } -> { cookies } -> NULL'
+  );
+});
