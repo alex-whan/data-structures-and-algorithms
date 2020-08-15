@@ -43,5 +43,13 @@ it('includes() returns true when finding a value within the list', () => {
 });
 
 // Will return false when searching for a value in the linked list that does not exist
+it('includes() returns false when value is not found within the list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insert('pie');
+  expect(ll.includes('peaches')).toBe(false);
+});
 
 // Can properly return a collection of all the values that exist in the linked list
