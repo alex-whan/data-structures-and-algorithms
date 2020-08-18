@@ -62,3 +62,84 @@ it('toString() properly returns a collection of all values in the list', () => {
     '{ brownies } -> { cream } -> { cookies } -> NULL'
   );
 });
+
+// APPEND
+// Can successfully add a node to the end of the linked list
+it('can successfully add a node to the end of the list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.append('brownies');
+  expect(ll.toString()).toBe(
+    '{ cream } -> { cookies } -> { brownies } -> NULL'
+  );
+});
+
+// Can successfully add multiple nodes to the end of a linked list
+it('can successfully add a node to the end of the list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.append('brownies');
+  ll.append('peaches');
+  expect(ll.toString()).toBe(
+    '{ cream } -> { cookies } -> { brownies } -> { peaches } -> NULL'
+  );
+});
+
+// Bonus test from previously: append to an empty list
+it('can append to an empty list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  expect(ll.head.value).toBe('cookies');
+});
+
+// INSERT BEFORE
+// Can successfully insert a node before a node located in the middle of a linked list
+it('can successfully insert a node before a node located in the middle of a linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insertBefore('cookies', 'peaches');
+  expect(ll.toString()).toBe(
+    '{ brownies } -> { cream } -> { peaches } -> { cookies } -> NULL'
+  );
+});
+
+// Can successfully insert a node before the first node of a linked list
+it('can successfully insert a node before the first node of a linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insertBefore('brownies', 'peaches');
+  expect(ll.toString()).toBe(
+    '{ peaches } -> { brownies } -> { cream } -> { cookies } -> NULL'
+  );
+});
+
+// INSERT AFTER
+// Can successfully insert after a node in the middle of the linked list
+it('can successfully insert a node after a node located in the middle of a linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insertAfter('cream', 'peaches');
+  expect(ll.toString()).toBe(
+    '{ brownies } -> { cream } -> { peaches } -> { cookies } -> NULL'
+  );
+});
+
+// Can successfully insert a node after the last node of the linked list
+it('can successfully insert a node after the last node of a linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insertAfter('cookies', 'peaches');
+  expect(ll.toString()).toBe(
+    '{ brownies } -> { cream } -> { cookies } -> { peaches } -> NULL'
+  );
+});
