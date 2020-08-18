@@ -97,18 +97,14 @@ class LinkedList {
     if (k < 0) {
       return 'EXCEPTION';
     }
-
     while (currentNode) {
       currentNode = currentNode.next;
       counter++;
     }
-
     if (k > counter) {
       return 'EXCEPTION';
     }
-
     currentNode = this.head;
-
     for (let i = 0; i < counter - k; i++) {
       currentNode = currentNode.next;
     }
