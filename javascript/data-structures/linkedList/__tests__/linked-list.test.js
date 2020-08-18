@@ -143,3 +143,47 @@ it('can successfully insert a node after the last node of a linked list', () => 
     '{ brownies } -> { cream } -> { cookies } -> { peaches } -> NULL'
   );
 });
+
+// KTH FROM END - Unit Tests
+// Where k is greater than the length of the linked list
+it('should throw an exception when k is greater than the length of the linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  expect(ll.kthFromEnd(6)).toBe('EXCEPTION');
+});
+
+// Where k and the length of the list are the same
+it('should return a value when k and the length of the list are the same', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  expect(ll.kthFromEnd(3)).toBe('brownies');
+});
+
+// Where k is not a positive integer
+it('should throw an exception when k is not a positive integer', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  expect(ll.kthFromEnd(-2)).toBe('EXCEPTION');
+});
+
+// Where the linked list is of a size 1
+it('should return a value when the linked list is of a size of 1', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  expect(ll.kthFromEnd(1)).toBe('cookies');
+});
+
+// “Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+it('should return a value when k is somewhere in the middle of the linked list (Happy Path)', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  expect(ll.kthFromEnd(2)).toBe('cream');
+});
