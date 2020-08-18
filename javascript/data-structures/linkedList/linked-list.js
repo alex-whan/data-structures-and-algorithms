@@ -38,6 +38,26 @@ class LinkedList {
     nodeMap += `{ ${currentNode.value} } -> `;
     return `${nodeMap}NULL`;
   }
+
+  // append(value) {}
+  insertBefore(value, newVal) {
+    let nodeToInsert = new Node(newVal, null);
+    let currentNode = this.head;
+    if (currentNode.value === value) {
+      nodeToInsert.next = currentNode;
+      this.head = nodeToInsert;
+      // break;
+    }
+
+    while (currentNode.next !== null) {
+      if (currentNode.next.value === value) {
+        nodeToInsert.next = currentNode.next;
+        currentNode.next = nodeToInsert;
+      }
+      currentNode = currentNode.next;
+    }
+  }
+  // insertAfter(value, newVal) {}
 }
 
 module.exports = LinkedList;
