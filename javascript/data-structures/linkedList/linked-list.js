@@ -46,7 +46,7 @@ class LinkedList {
     if (currentNode.value === value) {
       nodeToInsert.next = currentNode;
       this.head = nodeToInsert;
-      // break;
+      return;
     }
 
     while (currentNode.next !== null) {
