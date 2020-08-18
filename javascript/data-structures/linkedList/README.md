@@ -4,7 +4,7 @@
 
 ## Challenge
 
-Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node. Within your LinkedList class, include a head property. Upon instantiation, an empty Linked List should be created. Write the following methods for the LinkedList class: `insert()`, `includes()`, `toString()`, `append()`, `insertBefore()`, `insertAfter()`. See below for further information on method functionality.
+Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node. Within your LinkedList class, include a head property. Upon instantiation, an empty Linked List should be created. Write the following methods for the LinkedList class: `insert()`, `includes()`, `toString()`, `append()`, `insertBefore()`, `insertAfter()`, `kthFromEnd()`. See below for further information on method functionality.
 
 ## Approach & Efficiency
 
@@ -16,6 +16,7 @@ Create a Node class that has properties for the value stored in the Node, and a 
 - `append()`: O(n)
 - `insertBefore()`: O(n)
 - `insertAfter()`: O(n)
+- `kthFromEnd()`: O(2n)
 
 ### Big O Space:
 
@@ -25,6 +26,7 @@ Create a Node class that has properties for the value stored in the Node, and a 
 - `append()`: O(n)
 - `insertBefore()`: O(n)
 - `insertAfter()`: O(n)
+- `kthFromEnd()`: O(2n)
 
 ## API
 
@@ -44,9 +46,16 @@ Create a Node class that has properties for the value stored in the Node, and a 
 
 - `insertAfter(value, newVal)`: Takes in any value and newValue as arguments and adds a new node with the given newValue immediately after the first value node.
 
+- `kthFromEnd(k)`: Takes a number (k) as a parameter. Returns the node’s value that is "k" from the end of the linked list.
+
 ## Diagrams
+
+### Whiteboard: kthFromEnd() Method
+
+![kthFromEnd Whiteboard 1](./assets/kthFromEnd1.png)
+![kthFromEnd Whiteboard 2](./assets/kthFromEnd2.png)
 
 ### Whiteboard: insertBefore() Method
 
-![insertBefore Whiteboard 1](./insertBefore1.png)
-![insertBefore Whiteboard 2](./insertBefore2.png)
+![insertBefore Whiteboard 1](./assets/insertBefore1.png)
+![insertBefore Whiteboard 2](./assets/insertBefore2.png)
