@@ -39,7 +39,21 @@ class LinkedList {
     return `${nodeMap}NULL`;
   }
 
-  // append(value) {}
+  append(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+
+    currentNode.next = newNode;
+  }
+
   insertBefore(value, newVal) {
     let nodeToInsert = new Node(newVal, null);
     let currentNode = this.head;

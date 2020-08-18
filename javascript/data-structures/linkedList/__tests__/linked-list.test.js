@@ -65,8 +65,27 @@ it('toString() properly returns a collection of all values in the list', () => {
 
 // APPEND
 // Can successfully add a node to the end of the linked list
+it('can successfully add a node to the end of the list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.append('brownies');
+  expect(ll.toString()).toBe(
+    '{ cream } -> { cookies } -> { brownies } -> NULL'
+  );
+});
 
 // Can successfully add multiple nodes to the end of a linked list
+it('can successfully add a node to the end of the list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.append('brownies');
+  ll.append('peaches');
+  expect(ll.toString()).toBe(
+    '{ cream } -> { cookies } -> { brownies } -> { peaches } -> NULL'
+  );
+});
 
 // INSERT BEFORE
 // Can successfully insert a node before a node located in the middle of a linked list
@@ -89,7 +108,7 @@ it('can successfully insert a node before the first node of a linked list', () =
   ll.insert('brownies');
   ll.insertBefore('brownies', 'peaches');
   expect(ll.toString()).toBe(
-    '{ peaches } -> { bownies } -> { cream } -> { cookies } -> NULL'
+    '{ peaches } -> { brownies } -> { cream } -> { cookies } -> NULL'
   );
 });
 
