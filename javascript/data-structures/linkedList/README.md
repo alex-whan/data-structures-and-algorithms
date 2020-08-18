@@ -43,3 +43,10 @@ Create a Node class that has properties for the value stored in the Node, and a 
 - `insertBefore(value, newVal)`: Takes in any value and newValue as arguments and adds a new node with the given newValue immediately before the first value node.
 
 - `insertAfter(value, newVal)`: Takes in any value and newValue as arguments and adds a new node with the given newValue immediately after the first value node.
+
+## Diagrams
+
+### Whiteboard: insertBefore() Method
+
+![insertBefore Whiteboard 1](./insertBefore1.png)
+![insertBefore Whiteboard 2](./insertBefore2.png)
