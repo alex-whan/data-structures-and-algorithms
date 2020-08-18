@@ -70,18 +70,28 @@ it('toString() properly returns a collection of all values in the list', () => {
 
 // INSERT BEFORE
 // Can successfully insert a node before a node located in the middle of a linked list
-it('can successfully insert a node before a node localted in the middle of a linked list', () => {
+it('can successfully insert a node before a node located in the middle of a linked list', () => {
   const ll = new LinkedList();
   ll.insert('cookies');
   ll.insert('cream');
   ll.insert('brownies');
   ll.insertBefore('cookies', 'peaches');
   expect(ll.toString()).toBe(
-    '{ brownies } -> { cream } -> { peaches } ->  cookies } -> NULL'
+    '{ brownies } -> { cream } -> { peaches } -> { cookies } -> NULL'
   );
 });
 
 // Can successfully insert a node before the first node of a linked list
+it('can successfully insert a node before the first node of a linked list', () => {
+  const ll = new LinkedList();
+  ll.insert('cookies');
+  ll.insert('cream');
+  ll.insert('brownies');
+  ll.insertBefore('brownies', 'peaches');
+  expect(ll.toString()).toBe(
+    '{ peaches } -> { bownies } -> { cream } -> { cookies } -> NULL'
+  );
+});
 
 // INSERT AFTER
 // Can successfully insert after a node in the middle of the linked list
