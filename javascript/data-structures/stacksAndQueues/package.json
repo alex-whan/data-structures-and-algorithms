@@ -1,0 +1,15 @@
+{
+  "name": "stacksAndQueues",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stacks-and-queues.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^26.4.1"
+  }
+}
