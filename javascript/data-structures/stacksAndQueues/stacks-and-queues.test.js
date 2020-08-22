@@ -3,15 +3,13 @@
 const { Stack } = require('./stacks-and-queues.js');
 const { Queue } = require('./stacks-and-queues.js');
 
-// Can successfully push onto a stack
-describe('Stack methods', () => {
+describe('Stack tests', () => {
   it('can successfully push onto a stack', () => {
     const stack = new Stack();
     stack.push('Crono');
     expect(stack.peek()).toBe('Crono');
   });
 
-  // Can successfully push multiple values onto a stack
   it('can successfully push multiple values onto a stack', () => {
     const stack = new Stack();
     stack.push('Crono');
@@ -19,7 +17,6 @@ describe('Stack methods', () => {
     expect(stack.peek()).toBe('Marle');
   });
 
-  // Can successfully pop off the stack
   it('can successfully pop off of a stack', () => {
     const stack = new Stack();
     stack.push('Robo');
@@ -28,7 +25,6 @@ describe('Stack methods', () => {
     expect(popped).toBe('Lucca');
   });
 
-  // Can successfully empty a stack after multiple pops
   it('can successfully empty a stack after multiple pops', () => {
     const stack = new Stack();
     stack.push('Crono');
@@ -75,7 +71,7 @@ describe('Stack methods', () => {
   });
 });
 
-describe('Queue methods', () => {
+describe('Queue tests', () => {
   it('can successfully enqueue into a queue', () => {
     const queue = new Queue();
     queue.enqueue('Crono');
