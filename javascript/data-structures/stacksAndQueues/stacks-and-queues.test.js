@@ -2,51 +2,49 @@
 
 const Stack = require('./stacks-and-queues.js');
 
-// Write tests to prove the following functionality:
-
 // Can successfully push onto a stack
 it('can successfully push onto a stack', () => {
   const stack = new Stack();
-  stack.push('apples');
-  expect(stack.peek()).toBe('apples');
+  stack.push('Crono');
+  expect(stack.peek()).toBe('Crono');
 });
 
 // Can successfully push multiple values onto a stack
 it('can successfully push multiple values onto a stack', () => {
   const stack = new Stack();
-  stack.push('apples');
-  stack.push('bananas');
-  expect(stack.peek()).toBe('bananas');
+  stack.push('Crono');
+  stack.push('Lucca');
+  expect(stack.peek()).toBe('Lucca');
 });
 
 // Can successfully pop off the stack
 it('can successfully pop off of a stack', () => {
   const stack = new Stack();
-  stack.push('apples');
-  stack.push('bananas');
+  stack.push('Crono');
+  stack.push('Lucca');
   const popped = stack.pop();
-  expect(popped).toBe('bananas');
+  expect(popped).toBe('Lucca');
 });
 
 // Can successfully empty a stack after multiple pops
 it('can successfully empty a stack after multiple pops', () => {
   const stack = new Stack();
-  stack.push('apples');
-  stack.push('bananas');
+  stack.push('Crono');
+  stack.push('Lucca');
   const popped = stack.pop();
   const popped2 = stack.pop();
-  expect(popped).toBe('bananas');
-  expect(popped2).toBe('apples');
+  expect(popped).toBe('Lucca');
+  expect(popped2).toBe('Crono');
   expect(stack.isEmpty()).toBe(true);
 });
 
 // Can successfully peek the next item on the stack
 it('can successfully push onto a stack', () => {
   const stack = new Stack();
-  stack.push('apples');
-  stack.push('bananas');
-  stack.push('pears');
-  expect(stack.peek()).toBe('pears');
+  stack.push('Crono');
+  stack.push('Lucca');
+  stack.push('Marle');
+  expect(stack.peek()).toBe('Marle');
 });
 
 // Can successfully instantiate an empty stack
@@ -62,7 +60,7 @@ it('can successfully check and return true if a stack is empty', () => {
 
 it('can successfully check and return false if a stack is not empty', () => {
   const stack = new Stack();
-  stack.push('bananas');
+  stack.push('Lucca');
   expect(stack.isEmpty()).toBe(false);
 });
 
@@ -90,5 +88,3 @@ it('should not allow pop() on an empty list', () => {
 // Can successfully instantiate an empty queue
 
 // Calling dequeue or peek on empty queue raises exception
-
-// Ensure your tests are passing before you submit your solution.
