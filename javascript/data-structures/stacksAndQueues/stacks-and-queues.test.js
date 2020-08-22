@@ -1,7 +1,7 @@
 'use strict';
 
 const { Stack } = require('./stacks-and-queues.js');
-// const { Queue } = require('./stacks-and-queues.js');
+const { Queue } = require('./stacks-and-queues.js');
 
 // Can successfully push onto a stack
 describe('Stack methods', () => {
@@ -15,14 +15,14 @@ describe('Stack methods', () => {
   it('can successfully push multiple values onto a stack', () => {
     const stack = new Stack();
     stack.push('Crono');
-    stack.push('Lucca');
-    expect(stack.peek()).toBe('Lucca');
+    stack.push('Marle');
+    expect(stack.peek()).toBe('Marle');
   });
 
   // Can successfully pop off the stack
   it('can successfully pop off of a stack', () => {
     const stack = new Stack();
-    stack.push('Crono');
+    stack.push('Robo');
     stack.push('Lucca');
     const popped = stack.pop();
     expect(popped).toBe('Lucca');
@@ -40,8 +40,7 @@ describe('Stack methods', () => {
     expect(stack.isEmpty()).toBe(true);
   });
 
-  // Can successfully peek the next item on the stack
-  it('can successfully push onto a stack', () => {
+  it('can successfully peek the next item on the stack', () => {
     const stack = new Stack();
     stack.push('Crono');
     stack.push('Lucca');
@@ -49,8 +48,7 @@ describe('Stack methods', () => {
     expect(stack.peek()).toBe('Marle');
   });
 
-  // Can successfully instantiate an empty stack
-  it('should instantiate an empty stack - aka not blow up', () => {
+  it('should instantiate an empty stack', () => {
     const stack = new Stack();
     expect(stack).toBeDefined();
   });
@@ -62,11 +60,10 @@ describe('Stack methods', () => {
 
   it('can successfully check and return false if a stack is not empty', () => {
     const stack = new Stack();
-    stack.push('Lucca');
+    stack.push('Frog');
     expect(stack.isEmpty()).toBe(false);
   });
 
-  // Calling pop or peek on empty stack raises exception
   it('should not allow peek() on an empty list', () => {
     const stack = new Stack();
     expect(() => stack.peek()).toThrow(RangeError);
@@ -78,12 +75,58 @@ describe('Stack methods', () => {
   });
 });
 
-describe.skip('Queue methods', () => {
-  // Can successfully enqueue into a queue
-  // Can successfully enqueue multiple values into a queue
-  // Can successfully dequeue out of a queue the expected value
-  // Can successfully peek into a queue, seeing the expected value
-  // Can successfully empty a queue after multiple dequeues
-  // Can successfully instantiate an empty queue
-  // Calling dequeue or peek on empty queue raises exception
+describe('Queue methods', () => {
+  it('can successfully enqueue into a queue', () => {
+    const queue = new Queue();
+    queue.enqueue('Crono');
+    expect(queue.peek()).toBe('Crono');
+  });
+
+  it('can successfully enqueue multiple values into a queue', () => {
+    const queue = new Queue();
+    queue.enqueue('Crono');
+    queue.enqueue('Lucca');
+    queue.enqueue('Marle');
+    queue.enqueue('Frog');
+    queue.enqueue('Robo');
+    queue.enqueue('Ayla');
+    queue.enqueue('Magus');
+    expect(queue.peek()).toBe('Crono');
+  });
+
+  it('can successfully dequeue out of a queue the expected value', () => {
+    const queue = new Queue();
+    queue.enqueue('Marle');
+    queue.enqueue('Lucca');
+    queue.enqueue('Crono');
+    expect(queue.dequeue()).toBe('Marle');
+    expect(queue.peek()).toBe('Lucca');
+  });
+
+  it('can successfully peek into a queue, seeing the expected value', () => {
+    const queue = new Queue();
+    queue.enqueue('Robo');
+    expect(queue.peek()).toBe('Robo');
+  });
+
+  it('can successfully empty a queue after multiple dequeues', () => {
+    const queue = new Queue();
+    queue.enqueue('Magus');
+    queue.enqueue('Ozzie');
+    queue.enqueue('Lavos');
+    expect(queue.dequeue()).toBe('Magus');
+    expect(queue.dequeue()).toBe('Ozzie');
+    expect(queue.dequeue()).toBe('Lavos');
+    expect(queue.isEmpty()).toBeTruthy;
+  });
+
+  it('should instantiate an empty queue', () => {
+    const queue = new Queue();
+    expect(queue).toBeDefined();
+  });
+
+  it('should not allow peek() on an empty queue', () => {
+    const queue = new Queue();
+    expect(() => queue.peek()).toThrow(RangeError);
+  });
 });
