@@ -25,7 +25,7 @@ class Stack {
   // Establish NODE and assign next
   // Define a method called push which takes any value as an argument and adds a new node with that value to the top of the stack with an O(1) Time performance.
   push(value) {
-    return (this.top = new Node(value, this.top));
+    this.top = new Node(value, this.top);
   }
 
   // Define a method called pop that does not take any argument, removes the node from the top of the stack, and returns the node’s value.
@@ -35,8 +35,10 @@ class Stack {
       throw new RangeError('Cannot pop off an empty stack');
     }
 
-    return this.top.pop();
-    // this.top.next?
+    let temp = this.top;
+    this.top = this.top.next;
+    temp.next = null;
+    return temp.value;
   }
 
   // Define a method called peek that does not take an argument and returns the value of the node located on top of the stack, without removing it from the stack.
@@ -58,11 +60,10 @@ class Stack {
   }
 }
 
-class Queue {}
+// class Queue {}
 
-module.exports = Node;
 module.exports = Stack;
-module.exports = Queue;
+// module.exports = Queue;
 
 // Create a Queue class that has a front property. It creates an empty Queue when instantiated.
 // This object should be aware of a default empty value assigned to front when the queue is created.
