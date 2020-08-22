@@ -1,6 +1,7 @@
 'use strict';
 
-const Stack = require('./stacks-and-queues.js');
+const { Stack } = require('./stacks-and-queues.js');
+// const { Queue } = require('./stacks-and-queues.js');
 
 // Can successfully push onto a stack
 describe('Stack methods', () => {
