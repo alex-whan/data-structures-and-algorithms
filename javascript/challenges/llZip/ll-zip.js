@@ -18,7 +18,7 @@ function zipLists(list1, list2) {
 
     if (current2) {
       zippedList.append(current2.value);
-      current2 = current.next;
+      current2 = current2.next;
     }
   }
 
