@@ -9,9 +9,6 @@ class Node {
   }
 }
 
-// Create a BinaryTree class
-// Define a method for each of the depth first traversals called preOrder, inOrder, and postOrder which returns an array of the values, ordered appropriately.
-
 class BinaryTree {
   constructor(root = null) {
     this.root = root;
@@ -69,25 +66,60 @@ class BinaryTree {
   }
 }
 
-const Marle = new Node('Marle');
-const Lucca = new Node('Lucca');
-const Crono = new Node('Crono', Lucca, Marle);
-const tree = new BinaryTree(Crono);
-const preOrderResults = tree.preOrder();
-const inOrderResults = tree.inOrder();
-const postOrderResults = tree.postOrder();
-console.log(preOrderResults);
-console.log(inOrderResults);
-console.log(postOrderResults);
-
 // Create a BinarySearchTree class
 class BinarySearchTree extends BinaryTree {
+  constructor(root = null) {
+    super();
+    this.root = root;
+  }
+
   add(value) {
     // accepts a value, and adds a new node with that value in the correct location in the binary search tree
+    if (!this.root) {
+      new Node(value);
+    }
+    // let valueToAdd = value;
+
+    function _add(value) {
+      if (value === this.root.value) {
+        throw new RangeError('Values must be unique!');
+      }
+
+      if (value < this.root.value) {
+        if (!this.root.left) {
+          this.root.left = new Node(value);
+          return;
+        }
+        _add(this.root.left.value);
+      }
+
+      if (value > this.root.value) {
+        if (!this.root.right) {
+          this.root.right = new Node(value);
+          return;
+        }
+        _add(this.root.right.value);
+      }
+    }
+
+    _add(value);
   }
 
   contains(value) {
     // accept a value, and returns a boolean indicating whether or not the value is in the tree at least once
+    let currentNode = this.root;
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return true;
+      }
+
+      if (currentNode.value > value) {
+        currentNode = currentNode.left;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
+    return false;
   }
 }
 

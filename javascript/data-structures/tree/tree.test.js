@@ -4,21 +4,18 @@ const { Node } = require('./tree');
 const { BinaryTree } = require('./tree');
 const { BinarySearchTree } = require('./tree');
 
-// Write tests to prove the following functionality:
-describe('BinaryTree tests', () => {
+describe('Binary Tree tests', () => {
   it('can successfully instantiate an empty tree', () => {
     const tree = new BinaryTree();
     expect(tree).toBeDefined();
   });
 
-  // Can successfully instantiate a tree with a single root node
   it('can successfully instantiate a tree with a single root node', () => {
     const Crono = new Node('Crono');
     const tree = new BinaryTree(Crono);
     expect(tree.root.value).toBe('Crono');
   });
 
-  // Can successfully add a left child and right child to a single root node
   it('can successfully add a left child and right child to a single root node', () => {
     const Marle = new Node('Marle');
     const Lucca = new Node('Lucca');
@@ -28,7 +25,6 @@ describe('BinaryTree tests', () => {
     expect(tree.root.right.value).toBe('Marle');
   });
 
-  // Can successfully return a collection from a preorder traversal
   it('can successfully return a collection from a preorder traversal', () => {
     const Frog = new Node('Frog');
     const Robo = new Node('Robo');
@@ -87,5 +83,23 @@ describe('BinaryTree tests', () => {
       'Marle',
       'Crono',
     ]);
+  });
+});
+
+describe('Binary Search Tree tests', () => {
+  it('can successfully instantiate an empty BinarySearchTree', () => {
+    const tree = new BinarySearchTree();
+    expect(tree).toBeDefined();
+  });
+
+  it('can add values to the correct location in the BinarySearchTree', () => {
+    const node1 = new Node(5);
+    const tree = new BinarySearchTree(node1);
+    console.log('TREE???', tree);
+    tree.add(1);
+    console.log(tree.root.left);
+    tree.add(2);
+    tree.add(3);
+    expect(tree.inOrder()).toEqual([1, 2, 3]);
   });
 });
