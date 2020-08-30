@@ -77,14 +77,13 @@ class BinarySearchTree extends BinaryTree {
     if (!currentNode) {
       currentNode = nodeToAdd;
     } else {
+      if (nodeToAdd.value === currentNode.value) {
+        throw new RangeError('Values must be unique!');
+      }
       _add(nodeToAdd, currentNode);
     }
 
     function _add(nodeToAdd, currentNode) {
-      // if (nodeToAdd.value === currentNode.value) {
-      //   throw new RangeError('Values must be unique!');
-      // }
-
       while (currentNode.value !== nodeToAdd.value) {
         if (nodeToAdd.value < currentNode.value) {
           if (!currentNode.left) {
