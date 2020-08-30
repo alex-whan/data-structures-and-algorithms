@@ -68,11 +68,6 @@ class BinaryTree {
 
 // Create a BinarySearchTree class
 class BinarySearchTree extends BinaryTree {
-  // constructor(root = null) {
-  //   super();
-  //   this.root = root;
-  // }
-
   add(value) {
     // accepts a value, and adds a new node with that value in the correct location in the binary search tree
 
