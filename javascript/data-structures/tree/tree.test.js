@@ -95,9 +95,9 @@ describe('Binary Search Tree tests', () => {
   it('can add values to the correct location in the BinarySearchTree', () => {
     const node1 = new Node(1);
     const tree = new BinarySearchTree(node1);
-    tree.add(2);
     tree.add(3);
     tree.add(4);
+    tree.add(2);
     expect(tree.inOrder()).toEqual([1, 2, 3, 4]);
   });
 
