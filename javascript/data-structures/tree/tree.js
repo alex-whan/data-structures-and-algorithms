@@ -68,41 +68,48 @@ class BinaryTree {
 
 // Create a BinarySearchTree class
 class BinarySearchTree extends BinaryTree {
-  constructor(root = null) {
-    super();
-    this.root = root;
-  }
+  // constructor(root = null) {
+  //   super();
+  //   this.root = root;
+  // }
 
   add(value) {
     // accepts a value, and adds a new node with that value in the correct location in the binary search tree
-    if (!this.root) {
-      new Node(value);
-    }
-    // let valueToAdd = value;
 
-    function _add(value) {
-      if (value === this.root.value) {
-        throw new RangeError('Values must be unique!');
-      }
+    let nodeToAdd = new Node(value);
+    let currentNode = this.root;
 
-      if (value < this.root.value) {
-        if (!this.root.left) {
-          this.root.left = new Node(value);
-          return;
-        }
-        _add(this.root.left.value);
-      }
-
-      if (value > this.root.value) {
-        if (!this.root.right) {
-          this.root.right = new Node(value);
-          return;
-        }
-        _add(this.root.right.value);
-      }
+    if (!currentNode) {
+      currentNode = nodeToAdd;
+    } else {
+      _add(nodeToAdd, currentNode);
     }
 
-    _add(value);
+    function _add(nodeToAdd, currentNode) {
+      // if (nodeToAdd.value === currentNode.value) {
+      //   throw new RangeError('Values must be unique!');
+      // }
+
+      while (currentNode.value !== nodeToAdd.value) {
+        if (nodeToAdd.value < currentNode.value) {
+          if (!currentNode.left) {
+            currentNode.left = nodeToAdd;
+            return;
+          } else {
+            currentNode = currentNode.left;
+            _add(nodeToAdd, currentNode);
+          }
+        } else {
+          if (!currentNode.right) {
+            currentNode.right = nodeToAdd;
+            return;
+          } else {
+            currentNode = currentNode.right;
+            _add(nodeToAdd, currentNode);
+          }
+        }
+      }
+    }
   }
 
   contains(value) {

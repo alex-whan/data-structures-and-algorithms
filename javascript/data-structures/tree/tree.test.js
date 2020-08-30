@@ -93,13 +93,31 @@ describe('Binary Search Tree tests', () => {
   });
 
   it('can add values to the correct location in the BinarySearchTree', () => {
-    const node1 = new Node(5);
+    const node1 = new Node(1);
     const tree = new BinarySearchTree(node1);
-    console.log('TREE???', tree);
-    tree.add(1);
-    console.log(tree.root.left);
     tree.add(2);
     tree.add(3);
-    expect(tree.inOrder()).toEqual([1, 2, 3]);
+    tree.add(4);
+    expect(tree.inOrder()).toEqual([1, 2, 3, 4]);
+  });
+
+  it('can successfully return true if a value is in the tree at least once', () => {
+    const node1 = new Node(1);
+    const tree = new BinarySearchTree(node1);
+    console.log('TREE???', tree);
+    tree.add(2);
+    tree.add(3);
+    tree.add(4);
+    expect(tree.contains(4)).toBe(true);
+  });
+
+  it('can successfully return false if a value is not in the tree at least once', () => {
+    const node1 = new Node(1);
+    const tree = new BinarySearchTree(node1);
+    console.log('TREE???', tree);
+    tree.add(2);
+    tree.add(3);
+    tree.add(4);
+    expect(tree.contains(8)).toBe(false);
   });
 });
