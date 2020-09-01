@@ -84,6 +84,30 @@ describe('Binary Tree tests', () => {
       'Crono',
     ]);
   });
+
+  it('can successfully return the maximum numeric value within a tree', () => {
+    const one = new Node(1);
+    const two = new Node(2);
+    const three = new Node(3);
+    const four = new Node(4);
+    const five = new Node(5, three, four);
+    const six = new Node(6, two, one);
+    const seven = new Node(7, six, five);
+    const tree = new BinaryTree(seven);
+    expect(tree.postOrder()).toEqual([2, 1, 6, 3, 4, 5, 7]);
+    expect(tree.findMaximumValue()).toEqual(7);
+  });
+
+  it('can successfully return the maximum numeric value within a single-node tree', () => {
+    const one = new Node(1);
+    const tree = new BinaryTree(one);
+    expect(tree.findMaximumValue()).toEqual(1);
+  });
+
+  it('throws an exception if findMaximumValue is called on an empty tree', () => {
+    const tree = new BinaryTree();
+    expect(() => tree.findMaximumValue()).toThrow(RangeError);
+  });
 });
 
 describe('Binary Search Tree tests', () => {
