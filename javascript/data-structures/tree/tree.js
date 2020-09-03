@@ -88,6 +88,31 @@ class BinaryTree {
     _findMaximumValue(this.root);
     return max;
   }
+
+  breadthFirstTraversal() {
+    const arr = [];
+    const queue = [];
+
+    if (!this.root) {
+      throw new RangeError('Tree is empty!');
+    }
+
+    queue.push(this.root);
+    while (queue) {
+      let front = queue.shift();
+      arr.push(front);
+
+      if (front.left) {
+        queue.push(front.left);
+      }
+
+      if (front.right) {
+        queue.push(front.right);
+      }
+    }
+
+    return arr;
+  }
 }
 
 // Create a BinarySearchTree class
