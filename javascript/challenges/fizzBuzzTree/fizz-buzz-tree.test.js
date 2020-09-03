@@ -38,11 +38,11 @@ describe('FizzBuzz Tree tests', () => {
     expect(tree.inOrder()).toEqual(['FizzBuzz']);
   });
 
-  it.skip('should return a string of a number for node values divisible by neither 5 nor 3', () => {
+  it('should return a string of a number for node values divisible by neither 5 nor 3', () => {
     let fizzyBuzzNode = new Node(2);
     let tree = new BinaryTree(fizzyBuzzNode);
     fizzBuzzTree(tree);
-    expect(tree.inOrder()).toEqual('2');
+    expect(tree.inOrder()).toEqual(['2']);
   });
 
   it('should return a correct tree with more than one node', () => {
@@ -59,7 +59,7 @@ describe('FizzBuzz Tree tests', () => {
       'Fizz',
       'Buzz',
       'Buzz',
-      2,
+      '2',
       'FizzBuzz',
     ]);
   });
