@@ -20,7 +20,7 @@ function fizzBuzzTree(tree) {
     } else if (root.value % 3 === 0) {
       root.value = 'Fizz';
     } else {
-      root.value.toString();
+      root.value = root.value.toString();
     }
 
     _fizzBuzzCheck(root.left);
