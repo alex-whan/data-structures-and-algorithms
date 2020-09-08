@@ -36,4 +36,4 @@ O(1)
 
 ### Whiteboard
 
-![queueWithStacks Whiteboard 1](./queueWithStacks.png)
+![multiBracketValidation Whiteboard 1](./multiBracketValidationWhiteboard1.png)
