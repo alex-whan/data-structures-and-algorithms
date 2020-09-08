@@ -1,35 +1,39 @@
-// const multiBracketValidation = input => {
-//   if (input.length <= 1) {
-//     return false;
-//   }
-
-//   let stack = [];
-
-//   let openingBrackets = ['[', '{', '('];
-//   let closingBrackets = [']', '}', ')'];
-
-//   return stack.length === 0;
-// };
+'use strict';
 
 const multiBracketValidation = input => {
-  let brackets = '[]{}()';
-  let stack = [];
+  const stack = [];
+  const openBrackets = ['[', '{', '('];
+  const closingBrackets = [']', '}', ')'];
 
-  for (let bracket of input) {
-    let bracketsIndex = brackets.indexOf(bracket);
+  const match = {
+    ']': '[',
+    '}': '{',
+    ')': '(',
+  };
 
-    if (bracketsIndex === -1) {
-      continue;
-    }
-
-    if (bracketsIndex % 2 === 0) {
-      stack.push(bracketsIndex + 1);
-    } else {
-      if (stack.pop() !== bracketsIndex) {
-        return false;
-      }
-    }
+  if (input.length <= 1) {
+    throw new RangeError('Cannot validate an input of this length.');
   }
 
-  return stack.length === 0;
+  if (input.length > 1 && input.includes('{' || '[' || '(')) {
+    for (let i = 0; i < input.length; i++) {
+      let char = input[i];
+
+      if (openBrackets.includes(char)) {
+        stack.push(char);
+      }
+
+      if (closingBrackets.includes(char)) {
+        let popped = stack.pop();
+        if (popped !== match[char]) {
+          return false;
+        }
+        return true;
+      }
+    }
+  } else {
+    return false;
+  }
 };
+
+module.exports = multiBracketValidation;
