@@ -1,4 +1,4 @@
-# Queue Implementation with Stacks
+# Multi-Bracket Validation
 
 ### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/blob/master/javascript/challenges/multiBracketValidation/multi-bracket-validation.js)**
 
