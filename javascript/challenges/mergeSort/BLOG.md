@@ -70,13 +70,45 @@ With this is mind - knowing that once an array has a length of one, it's ready t
 
     `[8], [4], [23]`
 
-- As we now are at our base case for beginning to actually merge the left side of the original array, we recursively call our `merge()` function with the `left` and `right` parameters until we end up with a single, sorted array once more:
+- As we now are at our base case for beginning to actually merge the left side of the original array, we recursively call our `merge()` function with the `left` and `right` parameters until we end up with a single, sorted array once more. As the array previously containing `4` and `23` was the lowest "level" of this recursion, we can start by merging that back together:
 
-  - left =
-  - `merge()
+  - left = `[4]`
+  - right = `[23]`
+  - `merge([4], [23])`
+  - output = `[4, 23]`
+
+- Next, we merge this newly combined array with the previous "left" side array of `[8]`:
+
+  - left = `[8]`
+  - right = `[4, 23]`
+  - `merge([8], right)`
+  - output = `[4, 8, 23]`
+
+- At this point, we have our very original "left" side of our input array re-merged in the proper order. We can now repeat this entire splitting/merging process with the original "right" side of our input array. Once we end up with a sorted "right" side of the array, we can merge both the "left" and "right" sorted arrays back into a single output (`mergedArr`) array:
 
 - Right: `[42, 16, 15]`
 
   midpoint = `index 1`
-  left = `[42, 4, 23]`
-  right = `[42, 16, 15]`
+  left = `[42]`
+  right = `[16, 15]`
+
+- Next: (remember, the sole `42` is ready to go at this point, so we only need to call the function recursively on the "right" side we received): `[16, 15]`
+
+  midpoint = `index 1`
+  left = `[16]`
+  right = `[15]`
+
+- Re-merge all of the separate arrays: `[42], [16], [15]`
+
+- `[16], [15]` --> `[15, 16]`
+- `[42], [15, 16]` --> `[15, 16, 42]`
+
+- Now, we call our `merge()` function once more with our two sorted versions of our original `left` and `right` arrays:
+
+left: `[4, 8, 23]`
+right: `[15, 16, 42]`
+merge(left, right) = `[4, 8, 15, 16, 23, 42]`
+
+- Our original `mergeSort()` function now will return our final, sorted output array:
+
+`[4, 8, 15, 16, 23, 42]`
