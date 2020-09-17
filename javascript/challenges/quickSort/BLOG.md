@@ -32,3 +32,8 @@
           temp <-- arr[i]
           arr[i] <-- arr[low]
           arr[low] <-- temp
+
+- Key is finding the "pivot point" by which we can partition the array
+- From there, we can recursively continue to partition those sub-arrays until we have what we need
+- The pivot eventually will determine that everything to the left of it is smaller, while everything to the right is larger
+- The sub-arrays won't necessarily be in the correct order, but we know they're in their correct "side" of the pivot point
