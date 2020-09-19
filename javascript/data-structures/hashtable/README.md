@@ -1,6 +1,6 @@
 # Hashtables
 
-### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/blob/master/javascript/data-structures/hashtable/hashtable.js)**
+### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/tree/feat/hashtable/javascript/data-structures/hashtable)**
 
 ## Challenge
 
