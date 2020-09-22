@@ -24,6 +24,8 @@ class Hashtable {
       this.buckets[index] = [[key, value]];
     } else {
       // What do we do now when there's already someone in the bucket spot?? Variations on the theme of GET and what we did with the keys there
+      // Remember: buckets is an ARRAY!
+      this.buckets[index].push([key, value]);
     }
   }
 
@@ -45,9 +47,6 @@ class Hashtable {
         }
       }
     }
-
-    // another return here??
-    // return data;
   }
 
   // contains: takes in the key and returns a boolean, indicating if the key exists in the table already.
@@ -59,8 +58,9 @@ class Hashtable {
     const index = this.hash(key);
     if (this.buckets[index] === undefined) {
       return false; // does NOT contain key
+    } else {
+      return true;
     }
-    return true;
   }
 
   // hash: takes in an arbitrary key and returns an index in the collection.

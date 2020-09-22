@@ -29,10 +29,7 @@ Implement a Hashtable with the following methods: `add()`, `get()`, `contains()`
 
 ### Big O Space:
 
-- `add()`:
-- `get()`:
-- `contains()`:
-- `hash()`:
+- `O(n)`: At worst case, this data structure will need to create and maintain an array of `n` length in the case of multiple collisions.
 
 ## Diagrams
 

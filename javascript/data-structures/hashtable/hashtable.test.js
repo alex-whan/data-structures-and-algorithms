@@ -1,13 +1,48 @@
-// Write tests to prove the following functionality:
+'use strict';
 
-// Adding a key/value to your hashtable results in the value being in the data structure
+const Hashtable = require('../hashtable/hashtable');
 
-// Retrieving based on a key returns the value stored
+describe('Hashtable tests', () => {
+  it('adding a key/value to the table allows value to be found', () => {
+    const table = new Hashtable();
+    table.add('crono', 'trigger');
+    expect(table.contains('crono')).toBe(true);
+  });
 
-// Successfully returns null for a key that does not exist in the hashtable
+  it('should correctly retrieve a stored value based on a key', () => {
+    const table = new Hashtable();
+    table.add('crono', 'trigger');
+    const value = table.get('crono');
+    expect(value).toBe('trigger');
+  });
 
-// Successfully handle a collision within the hashtable
+  it('should return null for a key that does not exist in the hashtable', () => {
+    const table = new Hashtable();
+    table.add('crono', 'trigger');
+    expect(table.get('mario')).toBe(null);
+  });
 
-// Successfully retrieve a value from a bucket within the hashtable that has a collision
+  it('should successfully handle a collision within the hashtable', () => {
+    const table = new Hashtable();
+    table.add('crono', 'trigger');
+    table.add('ronco', 'trigger');
+    expect(table.contains('crono')).toBe(true);
+    expect(table.contains('ronco')).toBe(true);
+  });
 
-// Successfully hash a key to an in-range value
+  it('should successfully retrieve a value from a bucket within the hashtable that has a collision', () => {
+    const table = new Hashtable();
+    table.add('crono', 'trigger');
+    table.add('ronco', 'mario');
+    expect(table.get('crono')).toBe('trigger');
+    expect(table.get('ronco')).toBe('mario');
+  });
+
+  it('should successfully hash a key to an in-range value', () => {
+    const table = new Hashtable();
+    const indexValue = table.hash('crono');
+    console.log('index VALUE???', indexValue);
+    expect(indexValue).toBeLessThanOrEqual(1024);
+    expect(indexValue).toBeGreaterThanOrEqual(0);
+  });
+});
