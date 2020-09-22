@@ -16,7 +16,8 @@ const repeatedWord = string => {
       hashtable.add(word, word);
     }
   }
-  return 'No repeated words!';
+
+  throw new RangeError('No repeated words!');
 };
 
 module.exports = repeatedWord;

@@ -1,6 +1,8 @@
 # Repeated Word
 
-### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/blob/master/javascript/challenges/fizzBuzzTree/fizz-buzz-tree.js)**
+<!-- NEED TO CHANGE THIS LINK!! -->
+
+### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/blob/master/javascript/challenges/repeatedWord/repeated-word.js)**
 
 ## Challenge
 
