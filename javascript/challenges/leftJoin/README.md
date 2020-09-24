@@ -1,35 +1,50 @@
-# Tree Intersection
+# Left Join
 
-### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/blob/master/javascript/challenges/treeIntersection/tree-intersection.js)**
+### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/blob/master/javascript/challenges/leftJoin/left-join.js)**
 
 ## Challenge
 
-Find common values in 2 binary trees.
+Write a function that `LEFT JOINs` two hashmaps into a single data structure.
 
-Write a function called `treeIntersection` that takes two binary tree parameters.
+The first parameter is a hashmap that has word strings as keys, and a synonym of the key as values. The second parameter is a hashmap that has word strings as keys, and antonyms of the key as values.
 
-Without utilizing any of the built-in library methods available to your language, return a set of values found in both trees.
+Combine the key and corresponding values (if they exist) into a new data structure according to LEFT JOIN logic. LEFT JOIN means all the values in the first hashmap are returned, and if values exist in the “right” hashmap, they are appended to the result row.
+
+If no values exist in the right hashmap, then some flavor of `NULL` should be appended to the result row.
 
 ## Input/Output Examples
 
 **Input:**
 
-               10
-            /      \
-          5         2
-        /   \     /   \
-      15     18  55     30
+"Left" Hashtable (Synonyms)
 
+| Key        | Value      |
+| ---------- | ---------- |
+| `fond`     | `enamored` |
+| `wrath`    | `anger`    |
+| `diligent` | `employed` |
+| `outfit`   | `garb`     |
+| `guide`    | `usher`    |
 
-               10
-            /      \
-          5         16
-        /   \      /   \
-      15     33  55     20
+"Right" Hashtable (Antonyms)
+
+| Key        | Value     |
+| ---------- | --------- |
+| `fond`     | `averse`  |
+| `wrath`    | `delight` |
+| `diligent` | `idle`    |
+| `guide`    | `follow`  |
+| `flow`     | `jam`     |
 
 **Output:**
 
-`[15, 5, 10, 55]`
+      [
+      ['fond', 'enamored', 'averse'],
+      ['wrath', 'anger', 'delight'],
+      ['diligent', 'employed', 'idle'],
+      ['outfit', 'garb', null],
+      ['guide', 'usher', 'follow'],
+      ]
 
 ## Approach & Efficiency
 
@@ -37,14 +52,14 @@ Without utilizing any of the built-in library methods available to your language
 
 - **Big O Time:** O(n)
 
-  - Worst-case scenario is (n) number of nodes in the tree
+  - Worst-case: Must check a hashtable bucket array of (n) length
 
-- **Big O Space:** O(n)
+- **Big O Space:** O(log n)
 
-  - Worst-case scenario is (n) number of nodes in the tree
+  - Worst-case: Will temporarily store and return an array of (n) length
 
 ## Diagrams & Solutions
 
 ### Whiteboard
 
-![treeIntersection Whiteboard 1](./tree-intersection-whiteboard.jpg)
+![leftJoin Whiteboard 1](./left-join-whiteboard.jpg)
