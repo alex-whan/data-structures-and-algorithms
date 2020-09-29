@@ -1,5 +1,7 @@
 'use strict';
 
+const { Queue } = require('../stacksAndQueues/stacks-and-queues');
+
 class Graph {
   constructor() {
     this.adjacencyList = [];
@@ -31,6 +33,21 @@ class Graph {
 
   size() {
     return this.vertices.size;
+  }
+
+  breadthFirstTraversal(rootNode) {
+    const queue = new Queue();
+    const visited = [];
+
+    queue.enqueue(rootNode);
+    visited.push(rootNode);
+
+    while (!queue.isEmpty()) {
+      let currentNode = queue.dequeue();
+      visited.push(currentNode);
+    }
+
+    // Need to check on algorithm for moving through graph
   }
 }
 
