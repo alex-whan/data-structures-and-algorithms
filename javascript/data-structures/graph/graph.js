@@ -44,9 +44,18 @@ class Graph {
 
   addEdge(startVertex, endVertex, weight = 0) {
     // TODO: handle interlopers, aka a vertex that isn't in the graph
-    const edges = this.adjacencyList.get(startVertex);
-    const edge = new Edge(endVertex);
-    edges.push(edge); // this establishes the relationship in ONE direction
+
+    if (!this.adjacencyList.has(startVertex)) {
+      throw new RangeError('Starting vertex does not exist!');
+    }
+
+    if (!this.adjacencyList.has(endVertex)) {
+      throw new RangeError('Ending vertex does not exist!');
+    }
+
+    const adjacencies = this.adjacencyList.get(startVertex);
+    const edge = new Edge(endVertex, weight);
+    adjacencies.push(edge); // this establishes the relationship in ONE direction
   }
 
   getNodes() {
@@ -59,7 +68,7 @@ class Graph {
     // Returns a collection of edges connected to the given node (each vertex has a list of edges in the adjacencyList) - the [] in the adjacency list for a given vertex
     // Takes in a given node/vertex
     // Include the weight of the connection in the returned collection
-    return this.adjacencyList;
+    return this.adjacencyList.get(vertex);
   }
 
   size() {
@@ -86,12 +95,6 @@ class Vertex {
   constructor(value) {
     this.value = value;
   }
-
-  addEdge(edge) {
-    this.neighbors.add(edge);
-  }
-
-  getNeighbors() {}
 }
 
 class Edge {
