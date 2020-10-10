@@ -11,54 +11,53 @@ class Graph {
     // Adds a new node to the graph
     // Takes in the value of that node
     // Returns the added node
+    // let vertexToAdd = new Vertex(value);
     this.adjacencyList.set(vertex, []);
   }
-
-  // Alternate implementation (pros and cons)
-  // addVertexAlternate(value) {
-  //   const vertex = new Vertex(value);
-  //   this.adjacencyList.set(vertex, []);
-  // }
-
-  // under the hood, the startVertex instance should have awareness/weight of the endVertex added to its list
 
   // Adds a new edge between two nodes in the graph
   // Include the ability to have a “weight”
   // Takes in the two nodes to be connected by the edge
   // Both nodes should already be in the Graph
-  // addEdge(startVertex, endVertex, weight = 0) {
-  //   if (!this.adjacencyList.has(startVertex)) {
-  //     return;
-  //   }
-
-  //   if (!this.adjacencyList.has(endVertex)) {
-  //     return;
-  //   }
-
-  //   const adjacencies = this.adjacencyList.get(startVertex);
-
-  //   const edge = new Edge(endVertex, weight);
-
-  //   adjacencies.push(edge);
-  // }
 
   addEdge(startVertex, endVertex, weight = 0) {
-    // TODO: handle interlopers, aka a vertex that isn't in the graph
-
     if (!this.adjacencyList.has(startVertex)) {
-      throw new RangeError('Starting vertex does not exist!');
+      // throw new RangeError('Starting vertex does not exist!');
+      return;
     }
 
     if (!this.adjacencyList.has(endVertex)) {
-      throw new RangeError('Ending vertex does not exist!');
+      // throw new RangeError('Ending vertex does not exist!');
+      return;
     }
 
     const adjacencies = this.adjacencyList.get(startVertex);
     const edge = new Edge(endVertex, weight);
     adjacencies.push(edge); // this establishes the relationship in ONE direction
+    console.log('ADJACENCIES IN GRAPH??', adjacencies);
   }
 
-  getNodes() {
+  // addEdge(startVertex, endVertex, weight = 0) {
+  //   // if (!this.adjacencyList.has(startVertex)) {
+  //   //   // throw new RangeError('Starting vertex does not exist!');
+  //   //   return;
+  //   // }
+
+  //   // if (!this.adjacencyList.has(endVertex)) {
+  //   //   // throw new RangeError('Ending vertex does not exist!');
+  //   //   return;
+  //   // }
+
+  //   this.adjacencyList.get(startVertex).push(endVertex);
+  //   this.adjacencyList.get(endVertex).push(startVertex);
+
+  //   // const adjacencies = this.adjacencyList.get(startVertex);
+  //   // const edge = new Edge(endVertex, weight);
+  //   // adjacencies.push(edge); // this establishes the relationship in ONE direction
+  //   // console.log('ADJACENCIES IN GRAPH??', adjacencies);
+  // }
+
+  getVertices() {
     // Returns all of the nodes in the graph as a collection (set, list, or similar)
     return this.adjacencyList;
   }
@@ -75,12 +74,12 @@ class Graph {
     return this.adjacencyList.size;
   }
 
-  breadthFirstTraversal(rootNode) {
+  breadthFirstTraversal(startNode) {
     const queue = new Queue();
     const visited = [];
 
-    queue.enqueue(rootNode);
-    visited.push(rootNode);
+    queue.enqueue(startNode);
+    visited.push(startNode);
 
     while (!queue.isEmpty()) {
       let currentNode = queue.dequeue();
@@ -94,11 +93,12 @@ class Graph {
 class Vertex {
   constructor(value) {
     this.value = value;
+    // this.neighbors = new Set(); // added this
   }
 }
 
 class Edge {
-  constructor(vertex, weight) {
+  constructor(vertex, weight = 0) {
     this.vertex = vertex;
     this.weight = weight;
   }
