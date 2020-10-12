@@ -19,17 +19,20 @@ class Edge {
 
 class Graph {
   constructor() {
-    this.adjacencies = [];
+    this.adjacencies = new Map();
     this.edges = [];
   }
 
   addVertex(value) {
     let vertexToAdd = new Vertex(value);
-    this.adjacencies.push(vertexToAdd);
+    this.adjacencies.set(vertexToAdd, []);
     return vertexToAdd;
   }
 
   addEdges(startVertex, endVertex, weight = 0) {
+    this.adjacencies.get(startVertex).push(endVertex);
+    this.adjacencies.get(endVertex).push(startVertex);
+
     startVertex.neighbors.push(endVertex.value);
     endVertex.neighbors.push(startVertex.value);
     const edge = new Edge(startVertex, endVertex, weight);
@@ -53,11 +56,7 @@ class Graph {
   }
 
   size() {
-    if (this.adjacencies.length > 0) {
-      return this.adjacencies.length;
-    } else {
-      return null;
-    }
+    return this.adjacencies.size;
   }
 
   breadthFirstTraversal(startNode) {
