@@ -3,7 +3,7 @@
 const Graph = require('./graph2');
 
 describe('Breadth-first traversal tests', () => {
-  it('should correctly add a vertex with the value passed in', () => {
+  it.skip('should correctly add a vertex with the value passed in', () => {
     const graph = new Graph();
     graph.addVertex('Dantooine');
     graph.addVertex('Tatooine');
