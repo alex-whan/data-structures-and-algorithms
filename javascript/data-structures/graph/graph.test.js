@@ -1,5 +1,6 @@
 'use strict';
 
+// const Graph = require('./graph2');
 const Graph = require('./graph2');
 
 describe('Graph tests', () => {
@@ -55,12 +56,26 @@ describe('Graph tests', () => {
 });
 
 describe('Breadth-first traversal tests', () => {
-  it.skip('should correctly add a vertex with the value passed in', () => {
+  it('should correctly traverse the graph breadth-first', () => {
     const graph = new Graph();
     graph.addVertex('Tatooine');
     graph.addVertex('Dantooine');
     graph.addVertex('Dathomir');
     expect(graph.breadthFirstTraversal()).toEqual([
+      'Tatooine',
+      'Dantooine',
+      'Dathomir',
+    ]);
+  });
+});
+
+describe('Depth-first traversal tests', () => {
+  it('should correctly traverse the graph breadth-first', () => {
+    const graph = new Graph();
+    graph.addVertex('Tatooine');
+    graph.addVertex('Dantooine');
+    graph.addVertex('Dathomir');
+    expect(graph.depthFirstTraversal()).toEqual([
       'Tatooine',
       'Dantooine',
       'Dathomir',
