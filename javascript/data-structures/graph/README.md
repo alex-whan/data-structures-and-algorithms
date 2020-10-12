@@ -1,4 +1,4 @@
-# Hashtables
+# Graphs
 
 ### **[LINK TO CODE](https://github.com/alex-whan/data-structures-and-algorithms/tree/master/javascript/data-structures/graph)**
 
