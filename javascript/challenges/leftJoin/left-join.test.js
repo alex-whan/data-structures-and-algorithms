@@ -36,9 +36,9 @@ describe('leftJoin tests', () => {
     const testHash1 = testSynonymHash1();
     const testHash2 = testAntonymHash2();
 
-    console.log('TEST HASH 1:', testHash1.buckets[48]);
-    console.log('TEST HASH 1:', testHash1.buckets[48][0]);
-    console.log('TEST HASH 1:', testHash1.buckets[48][0][0]);
+    // console.log('TEST HASH 1:', testHash1.buckets[48]);
+    // console.log('TEST HASH 1:', testHash1.buckets[48][0]);
+    // console.log('TEST HASH 1:', testHash1.buckets[48][0][0]);
     // console.log('TEST HASH 2:', testHash2.buckets);
 
     expect(leftJoin(testHash1, testHash2)).toEqual(testOutput);

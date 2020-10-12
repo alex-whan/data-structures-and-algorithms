@@ -15,17 +15,13 @@ const hasDirectFlights = (graph, airports) => {
 
     const directConnections = graph.getNeighbors(originAirport);
 
-    // This way, if we DON'T find anything to switch it to true below, it comes out false
     let directFound = false;
-    // let's use a more modern way here: for/of
-    // what does it actually DO/MEAN?
+
     for (let connection of directConnections) {
       if (connection.vertex === destinationAirport.vertex) {
-        // if this is true, a direct connection was found
-        // or is it just 'destinationAirport'?
         directFound = true;
         cost += connection.weight;
-        break; // if we found it, no point in continuing loop
+        break;
       }
     }
 
@@ -38,11 +34,6 @@ const hasDirectFlights = (graph, airports) => {
   }
 
   const answer = { isPossible, cost };
-
-  // return {
-  //   isPossible,
-  //   cost,
-  // };
 
   return `${answer.isPossible}, $${answer.cost}`;
 };
