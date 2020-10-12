@@ -32,6 +32,7 @@ class Graph {
     endVertex.neighbors.push(startVertex.value);
     let edge = new Edge(startVertex, endVertex, weight);
     this.edges.push(edge);
+    return edge;
   }
 
   getVertices() {
