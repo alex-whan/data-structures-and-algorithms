@@ -1,5 +1,7 @@
 'use strict';
 
+const { Queue } = require('../stacksAndQueues/stacks-and-queues');
+
 class Vertex {
   constructor(value) {
     this.value = value;
@@ -30,7 +32,7 @@ class Graph {
   addEdges(startVertex, endVertex, weight = 0) {
     startVertex.neighbors.push(endVertex.value);
     endVertex.neighbors.push(startVertex.value);
-    let edge = new Edge(startVertex, endVertex, weight);
+    const edge = new Edge(startVertex, endVertex, weight);
     this.edges.push(edge);
     return edge;
   }
@@ -40,7 +42,7 @@ class Graph {
   }
 
   getNeighbors(vertex) {
-    let neighbors = [];
+    const neighbors = [];
     this.edges.forEach(edge => {
       if (edge.startVertex.value === vertex.value) {
         neighbors.push(edge);
@@ -56,6 +58,34 @@ class Graph {
     } else {
       return null;
     }
+  }
+
+  breadthFirstTraversal(startNode) {
+    const queue = new Queue();
+    const visited = [];
+
+    queue.enqueue(startNode);
+    visited.push(startNode);
+
+    while (!queue.isEmpty()) {
+      let currentNode = queue.dequeue();
+      visited.push(currentNode);
+
+      const children = this.getNeighbors(currentNode);
+
+      if (children.length > 0) {
+        children.forEach(child => {
+          if (
+            visited.filter(vertex => vertex.value !== child.startVertex.value)
+          ) {
+            queue.enqueue(child.endVertex);
+          }
+        });
+      }
+    }
+
+    return visited;
+    // Need to check on algorithm for moving through graph
   }
 }
 
