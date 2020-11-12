@@ -8,11 +8,11 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 ------------------------------------------------------------------------------------------------ */
 
-const raisedToTheThird = (arr) => {
+const raisedToTheThird = arr => {
   let resultArray = [];
-  arr.forEach((value) => resultArray.push(Math.pow(value, 3)));
+  arr.forEach(value => resultArray.push(Math.pow(value, 3)));
   return resultArray;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -21,7 +21,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 
 ------------------------------------------------------------------------------------------------ */
 
-const appendTheEnd = (str) => {
+const appendTheEnd = str => {
   return `${str} The end.`;
 };
 
@@ -38,7 +38,7 @@ appendFirstToLast(a);
 console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
-const appendFirstToLast = (arr) => arr.push(arr[0]);
+const appendFirstToLast = arr => arr.push(arr[0]);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -55,8 +55,7 @@ addBirthYearProperty(octavia, 1947);
 console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
-const addBirthYearProperty = (obj, year) => obj.yearBorn = year;
-
+const addBirthYearProperty = (obj, year) => (obj.yearBorn = year);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -71,8 +70,8 @@ setStatusAsAuthor(people);
 console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
-const setStatusAsAuthor = (people) => {
-    people.forEach(value => value.isAuthor = true)
+const setStatusAsAuthor = people => {
+  people.forEach(value => (value.isAuthor = true));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +91,6 @@ console.log(a) prints [1, 2, 3, 4]
 
 const append = (arr1, arr2) => {
   // Solution code here...
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,7 +106,13 @@ Run your tests from the console: jest challenges-02.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return a new array of numbers raised to the thrid power', () => {
-    expect(raisedToTheThird([2, 4, 5, -7, 0])).toStrictEqual([8, 64, 125, -343, 0]);
+    expect(raisedToTheThird([2, 4, 5, -7, 0])).toStrictEqual([
+      8,
+      64,
+      125,
+      -343,
+      0,
+    ]);
   });
 });
 
@@ -142,7 +146,11 @@ describe('Testing challenge 4', () => {
 
 describe('Testing challenge 5', () => {
   test('It should add a property to every object in an array', () => {
-    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
+    const a = [
+      { fullName: 'Octavia Butler' },
+      { fullName: 'Ray Bradbury' },
+      { fullName: 'Kurt Vonnegut' },
+    ];
     setStatusAsAuthor(a);
 
     expect(a[0].isAuthor).toStrictEqual(true);
