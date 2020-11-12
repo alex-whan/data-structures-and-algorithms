@@ -153,7 +153,9 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let personToCheck = arr.filter(person => person.name === character);
+  const person = Object.entries(personToCheck);
+  return person[0][1].children.length > 0 ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
