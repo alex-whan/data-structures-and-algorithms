@@ -91,7 +91,15 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = arr => {
-  // Solution code here...
+  const results = [];
+  arr.map(value => {
+    if (typeof value !== 'number') {
+      results.push('N/A');
+    } else {
+      value % 2 === 0 ? results.push('even') : results.push('odd');
+    }
+  });
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
