@@ -439,7 +439,6 @@ const extractChildren = arr => {
   characters.reduce((acc, current) => {
     current.children ? children.push(...current.children) : acc;
   }, []);
-  console.log('CHILDREN?', children);
   return children;
 };
 
