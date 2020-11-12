@@ -345,15 +345,6 @@ Write a function that, given an array of numbers as input, uses reduce to calcul
 Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
-// const calculateAverage = arr => {
-//   const reducer = (acc, current) => {
-//     acc + current;
-//   };
-//   let average = arr.reduce(reducer, 0);
-//   console.log('AVG????', average);
-//   return average;
-// };
-
 const calculateAverage = arr => {
   const sum = arr.reduce((a, b) => a + b);
   return sum / arr.length; // average
