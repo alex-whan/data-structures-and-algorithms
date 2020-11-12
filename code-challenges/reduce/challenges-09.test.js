@@ -377,7 +377,7 @@ const countPrimeNumbers = arr => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
-Write a function named extractState that, given the snorlaxData, below, uses reduce to return the object whose 'name' property matches the given string.
+Write a function named extractStat that, given the snorlaxData, below, uses reduce to return the object whose 'name' property matches the given string.
 
 If the input array does not have a stat with that specific name, the function should return null.
 ------------------------------------------------------------------------------------------------ */
@@ -414,7 +414,13 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+  const stat = arr.reduce((acc, current) => {
+    if (statName === current.stat.name) {
+      acc = current;
+    }
+    return acc;
+  }, null);
+  return stat;
 };
 
 /* ------------------------------------------------------------------------------------------------
