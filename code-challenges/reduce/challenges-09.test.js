@@ -330,7 +330,11 @@ const characters = [
 ];
 
 const countNumberOfChildren = arr => {
-  // Solution code here...
+  const reducer = (acc, current) => {
+    return current.children ? acc + current.children.length : acc;
+  };
+  let total = arr.reduce(reducer, 0);
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
