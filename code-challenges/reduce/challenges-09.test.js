@@ -434,7 +434,13 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = arr => {
-  // Solution code here...
+  const children = [];
+  const characters = arr.filter(person => person.name.includes('a'));
+  characters.reduce((acc, current) => {
+    current.children ? children.push(...current.children) : acc;
+  }, []);
+  console.log('CHILDREN?', children);
+  return children;
 };
 
 /* ------------------------------------------------------------------------------------------------
