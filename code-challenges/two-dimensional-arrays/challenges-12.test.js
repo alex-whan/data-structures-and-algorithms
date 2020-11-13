@@ -189,7 +189,17 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = weather => {
-  // Solution code here...
+  const arr = [];
+
+  weather.map(element => {
+    element.forEach(number => {
+      arr.push(number);
+    });
+  });
+
+  const total = arr.reduce((a, b) => a + b, 0);
+  const avg = total / arr.length;
+  return avg;
 };
 
 /* ------------------------------------------------------------------------------------------------
