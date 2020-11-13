@@ -220,7 +220,21 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = weather => {
-  // Solution code here...
+  const temp = [];
+
+  weather.map(week => {
+    let weeklyTotal = 0;
+
+    week.forEach(day => {
+      weeklyTotal += day;
+    });
+
+    let avg = weeklyTotal / week.length;
+    temp.push(avg);
+  });
+
+  let lowest = Math.min(...temp);
+  return lowest;
 };
 
 /* ------------------------------------------------------------------------------------------------
