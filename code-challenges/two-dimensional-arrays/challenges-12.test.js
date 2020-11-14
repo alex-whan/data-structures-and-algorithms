@@ -268,21 +268,6 @@ const excel = str => {
   return final;
 };
 
-// const excel = str => {
-//   const temp = str.split('\n');
-//   const final = temp.map(element => {
-//     let total = 0;
-//     element.forEach(number => {
-//       total += number;
-//     });
-//     return total;
-//   });
-//   console.log('TEMP BOU', temp);
-//   console.log('FIANL BOU', final);
-
-//   return final;
-// };
-
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
