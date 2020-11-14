@@ -160,7 +160,14 @@ You may also use other string or array methods.
 
 const splitFoods = recipe => {
   let result = [];
-  // Solution code here...
+  recipe.ingredients.forEach(ingredient => {
+    let firstIndex = ingredient.indexOf(' ');
+    let secondStr = ingredient.slice(firstIndex + 1);
+    let secondIdx = secondStr.indexOf(' ');
+    let finalStr = secondStr.slice(secondIdx + 1);
+    result.push(finalStr);
+  });
+
   return result;
 };
 
@@ -334,7 +341,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual([
       'Gruffalo',
