@@ -183,7 +183,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 
 const stepActions = recipe => {
   let result = [];
-  // Solution code here...
+  recipe.steps.forEach(step => {
+    let firstIndex = step.indexOf(' ');
+    let verb = step.slice(0, firstIndex);
+    result.push(verb);
+  });
   return result;
 };
 
@@ -359,7 +363,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return a list of recipe steps', () => {
     expect(stepActions(gruffaloCrumble)).toStrictEqual([
       'Pre-heat',
