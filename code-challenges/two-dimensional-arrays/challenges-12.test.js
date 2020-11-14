@@ -250,8 +250,42 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = str => {
-  // Solution code here...
+  const temp = str.split('\n');
+
+  const final = temp.map(element => {
+    let regex = /\d+/g;
+    let matches = element.match(regex);
+    console.log('MATCH??', matches);
+
+    let total = 0;
+    matches.forEach(number => {
+      let value = parseInt(number);
+      total += value;
+    });
+
+    return total;
+  });
+
+  console.log('TEMP BOY', temp);
+  console.log('FINAL BOY', final);
+
+  return final;
 };
+
+// const excel = str => {
+//   const temp = str.split('\n');
+//   const final = temp.map(element => {
+//     let total = 0;
+//     element.forEach(number => {
+//       total += number;
+//     });
+//     return total;
+//   });
+//   console.log('TEMP BOU', temp);
+//   console.log('FIANL BOU', final);
+
+//   return final;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
