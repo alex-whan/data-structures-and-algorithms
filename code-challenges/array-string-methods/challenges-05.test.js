@@ -124,17 +124,6 @@ const gruffaloCrumble = {
   ],
 };
 
-// const listFoods = (recipe) => {
-//   let result = [];
-//   recipe.ingredients.forEach(str => {
-//     str = str.slice(5,str.length);
-//     let indexedString = str.indexOf(' ') + 1;
-//     let slicedString = str.slice(indexedString, str.length);
-//     result.push(slicedString);
-//   })
-//   return result;
-// };
-
 // Don't care about number or the space
 // Next word is a unit/size followed by a space - don't care about those either
 // only care about words after the second space - essentially
