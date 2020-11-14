@@ -255,7 +255,6 @@ const excel = str => {
   const final = temp.map(element => {
     let regex = /\d+/g;
     let matches = element.match(regex);
-    console.log('MATCH??', matches);
 
     let total = 0;
     matches.forEach(number => {
@@ -265,9 +264,6 @@ const excel = str => {
 
     return total;
   });
-
-  console.log('TEMP BOY', temp);
-  console.log('FINAL BOY', final);
 
   return final;
 };
