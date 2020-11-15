@@ -205,7 +205,14 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = arr => {
-  // Solution code here...
+  let originalLength = arr.length;
+  for (let i = 0; i < originalLength; i++) {
+    const front = arr.shift();
+    if (front % 2 !== 0) {
+      arr.push(front);
+    }
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -380,7 +387,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should remove the even numbers from the array', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
