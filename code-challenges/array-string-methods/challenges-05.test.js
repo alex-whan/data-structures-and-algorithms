@@ -231,7 +231,11 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+
+    let cut = str.length - numberOfCharacters;
+    let newStr = str.substring(0, cut);
+    return newStr;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -400,7 +404,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should shorten the string based on the first argument', () => {
     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
