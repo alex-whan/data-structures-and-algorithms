@@ -250,12 +250,14 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = str => {
   let total = 0;
-  for (let letter in str) {
-    let regex = /\d+/;
-    let raw = letter.match(regex);
-    let num = parseInt(raw);
+  let regex = /\d+/g;
+  let raw = str.match(regex);
+
+  raw.map(number => {
+    let num = parseInt(number);
     total += num;
-  }
+  });
+
   return total;
 };
 
