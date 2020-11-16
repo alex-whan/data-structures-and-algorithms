@@ -270,7 +270,9 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 const removeVowels = str => {
-  // Solution code here...
+  let regex = /[aeiou]/gi;
+  let result = str.replace(regex, '');
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -283,9 +285,7 @@ For example, extractVowels('gregor') returns ['grgr', 'eo'].
 Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 ------------------------------------------------------------------------------------------------ */
 
-const extractVowels = str => {
-  // Solution code here...
-};
+const extractVowels = str => {};
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -438,7 +438,7 @@ describe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);
