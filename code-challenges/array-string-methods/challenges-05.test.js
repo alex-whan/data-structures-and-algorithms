@@ -289,8 +289,8 @@ const extractVowels = str => {
   let regex = /[aeiou]/gi;
   let vowels = str.match(regex);
   let result = str.replace(regex, '');
-  console.log('VOWELS?', vowels);
-  console.log('RESULTS?', result);
+  let sortedVowels = vowels.sort().join('');
+  return [result, sortedVowels];
 };
 
 /* ------------------------------------------------------------------------------------------------
