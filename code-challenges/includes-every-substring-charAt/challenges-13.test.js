@@ -181,7 +181,32 @@ const daysOfWeek = [
 ];
 
 const sortByDay = arr => {
-  // Solution code here...
+  const results = daysOfWeek.map(day => []);
+  arr.map(str => {
+    let event = str.toLowerCase();
+    if (event.includes('monday')) {
+      results[0].push(str);
+    }
+    if (event.includes('tuesday')) {
+      results[1].push(str);
+    }
+    if (event.includes('wednesday')) {
+      results[2].push(str);
+    }
+    if (event.includes('thursday')) {
+      results[3].push(str);
+    }
+    if (event.includes('friday')) {
+      results[4].push(str);
+    }
+    if (event.includes('saturday')) {
+      results[5].push(str);
+    }
+    if (event.includes('sunday')) {
+      results[6].push(str);
+    }
+  });
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
