@@ -213,7 +213,7 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 
 const characterByIndex = arr => {
   const results = [];
-  for (let i = 0; i < arr.length; i++) {
+  for (let i in arr) {
     let str = arr[i];
     results.push(str[i]);
   }
