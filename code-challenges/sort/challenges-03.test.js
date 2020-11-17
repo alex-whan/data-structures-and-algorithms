@@ -183,7 +183,20 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = arr => {
-  // Solution code here...
+  const order = { Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5 };
+
+  const schedule = arr.sort((a, b) => {
+    let meetingLengthA = Math.abs(a.start - a.end);
+    let meetingLengthB = Math.abs(b.start - b.end);
+
+    if (order[a.dayOfWeek] === order[b.dayOfWeek]) {
+      return meetingLengthA > meetingLengthB ? 1 : -1;
+    } else {
+      order[a.dayOfWeek] - order[b.dayOfWeek];
+    }
+  });
+
+  return schedule;
 };
 
 /* ------------------------------------------------------------------------------------------------
