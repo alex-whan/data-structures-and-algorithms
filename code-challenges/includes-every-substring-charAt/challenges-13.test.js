@@ -117,13 +117,7 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  const result = [];
-  arr.map(str => {
-    if (str.includes(target)) {
-      result.push(str);
-    }
-  });
-  return result;
+  return arr.filter(str => str.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
