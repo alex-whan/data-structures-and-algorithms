@@ -103,7 +103,7 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = arr => {
-  let sadArr = [];
+  const sadArr = [];
   arr.map(str => {
     str.includes(':)') ? sadArr.push(true) : sadArr.push(false);
   });
@@ -117,7 +117,13 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  // Solution code here...
+  const result = [];
+  arr.map(str => {
+    if (str.includes(target)) {
+      result.push(str);
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
