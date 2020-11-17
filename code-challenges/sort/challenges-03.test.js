@@ -167,7 +167,9 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = arr => {
-  // Solution code here...
+  const order = { Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5 };
+  const schedule = arr.sort((a, b) => order[a.dayOfWeek] - order[b.dayOfWeek]);
+  return schedule;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -377,7 +379,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
@@ -390,7 +392,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should add a class of pear to the thrid li', () => {
     addPearClass();
     expect($('li:nth-child(3)').hasClass('pear')).toBe(true);
