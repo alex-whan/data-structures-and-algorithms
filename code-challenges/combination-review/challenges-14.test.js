@@ -165,7 +165,9 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = url => {
-  // Solution code here...
+  return url.startsWith('https://') ? true : false;
+  // const regex = /^https:\/\//;
+  // return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -276,7 +278,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should check if url is https', () => {
     expect(isSecure('http://www.insecure.com')).toBe(false);
     expect(isSecure('https://secure.com')).toBe(true);
@@ -284,7 +286,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return true if there are three in a row', () => {
     expect(
       detectTicTacToeWin([
