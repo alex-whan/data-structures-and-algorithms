@@ -189,7 +189,15 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = board => {
-  // Solution code here...
+  const helpCheck = arr => {
+    if (arr === ['X', 'X', 'X'] || ['O', 'O', 'O']) {
+      return true;
+    }
+  };
+
+  board.map(arr => {
+    return helpCheck(arr);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
