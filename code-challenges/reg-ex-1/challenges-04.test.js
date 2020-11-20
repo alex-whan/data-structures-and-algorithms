@@ -64,14 +64,9 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = arr => {
-  const cityArray = [];
   const regex = /^[A-J]/;
-  arr.forEach(city => {
-    if (regex.test(city)) {
-      cityArray.push(city);
-    }
-  });
-  return cityArray;
+  const cities = arr.filter(city => regex.test(city));
+  return cities;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -253,7 +248,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
