@@ -1,2 +1,2 @@
 # data-structures-and-algorithms
-Code Challenges for Code 301 &amp; 401
+Data structures, algorithms, and code challenges for Code 301 &amp; 401.
