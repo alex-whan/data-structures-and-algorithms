@@ -189,8 +189,8 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = board => {
-  const flatten = board.reduce((acc, cur) => [...acc, ...cur], []);
-  const [nw, n, ne, w, c, e, sw, s, se] = flatten;
+  const flatten = arr => arr.reduce((acc, cur) => [...acc, ...cur], []);
+  const [nw, n, ne, w, c, e, sw, s, se] = flatten(board);
 
   const helpCheck = (pos1, pos2, pos3) => {
     if (!pos1 || !pos2 || !pos3) {
