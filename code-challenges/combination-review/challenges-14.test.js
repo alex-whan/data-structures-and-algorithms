@@ -189,12 +189,28 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = board => {
-  const wins = [[]];
+  const flatten = arr => arr.reduce((acc, cur) => [...acc, ...cur], []);
+  const [nw, n, ne, w, c, e, sw, s, se] = flatten(board);
 
-  const helpCheck = (row1, col1, row2, col2, row3, col3) => {
-    let counterX = 0;
-    let counterO = 0;
+  const helpCheck = (pos1, pos2, pos3) => {
+    if (!pos1 || !pos2 || !pos3) {
+      return false;
+    }
+    return pos1 === pos2 && pos2 === pos3;
   };
+
+  return (
+    helpCheck(nw, n, ne) ||
+    helpCheck(w, c, e) ||
+    helpCheck(sw, s, se) ||
+    helpCheck(nw, w, sw) ||
+    helpCheck(n, c, s) ||
+    helpCheck(ne, e, se) ||
+    helpCheck(nw, c, se) ||
+    helpCheck(ne, c, sw)
+  );
+
+  // Source: https://kyleshevlin.com/tic-tac-toe
 };
 
 /* ------------------------------------------------------------------------------------------------
