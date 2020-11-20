@@ -165,9 +165,8 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = url => {
-  return url.startsWith('https://') ? true : false;
-  // const regex = /^https:\/\//;
-  // return regex.test(url);
+  const regex = /^https:\/\//;
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
