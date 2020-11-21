@@ -83,6 +83,8 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = input => {
   const regex = /oct/i;
+  const result = regex.test(input);
+  console.log('RESULT??', result);
   return regex.test(input);
 };
 
