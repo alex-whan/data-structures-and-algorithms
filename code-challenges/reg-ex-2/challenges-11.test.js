@@ -15,7 +15,7 @@ const toLastNames = people => {
   let newArray = [];
   people.map(person => {
     return newArray.push(`${person.firstName} ${person.lastName}`);
-  })
+  });
   return newArray;
 };
 
@@ -27,11 +27,10 @@ Write a function named validatePin that uses a regular expression pattern to val
 If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
-const validatePin = (pin) => {
+const validatePin = pin => {
   let regex = /\b\d{4}\b/g;
   return regex.test(pin);
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -49,8 +48,9 @@ Return either true or false.
 Note: if you ever need to validate an email using a regex in practice, the Internet has the actual regex you should use. It's many many lines long.
 ------------------------------------------------------------------------------------------------ */
 
-const validateEmail = (email) => {
-  let regex = /\b\^SWd\/@{1}\^SWd\/(.net | .com | .org)\b\/;
+const validateEmail = email => {
+  // let regex = /\b\^SWd\/@{1}\^SWd\/(.net | .com | .org)\b\//;
+  const regex = /^\w+?.\w+@\w+(.net|.com|.org)$/;
   return regex.test(email);
 };
 
@@ -75,7 +75,7 @@ Your function should include a single regular expression pattern that matches an
 Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
-const validatePhoneNumber = (phoneNumber) => {
+const validatePhoneNumber = phoneNumber => {
   // Solution code here...
 };
 
@@ -104,11 +104,12 @@ Run your tests from the console: jest solutions-11.test.js
 
 describe('Testing challenge 1', () => {
   test('It should convert object to full name string', () => {
+    const people = [
+      { firstName: 'Jane', lastName: 'Doe' },
+      { firstName: 'James', lastName: 'Bond' },
+    ];
 
-    const people = [{ firstName: "Jane", lastName: "Doe" }, { firstName: "James", lastName: "Bond" }];
-
-    expect(toLastNames(people)).toStrictEqual(["Jane Doe", "James Bond"]);
-
+    expect(toLastNames(people)).toStrictEqual(['Jane Doe', 'James Bond']);
   });
 });
 
@@ -142,7 +143,7 @@ describe('Testing challenge 3', () => {
     expect(validateEmail('joe.schmoe@codefellows.net')).toBeTruthy();
   });
 
-  test('It should fail things that aren\'t email addresses', () => {
+  test("It should fail things that aren't email addresses", () => {
     expect(validateEmail('justastring')).toBeFalsy();
     expect(validateEmail('missing@adomain')).toBeFalsy();
     expect(validateEmail('@noname.com')).toBeFalsy();
@@ -181,9 +182,16 @@ describe('Testing challenge 4', () => {
 
 describe('Testing challenge 5', () => {
   test('It should return the closing tags', () => {
-    expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/p']);
+    expect(
+      findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])
+    ).toStrictEqual(['/h1', '/p']);
   });
   test('It should work if there are multiple closing tags in a single string', () => {
-    expect(findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/div', '/p']);
+    expect(
+      findTagNames([
+        '<div><h1>Hello, world!</h1></div>',
+        '<p>Welcome to my site</p>',
+      ])
+    ).toStrictEqual(['/h1', '/div', '/p']);
   });
 });
