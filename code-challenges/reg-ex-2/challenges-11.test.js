@@ -75,7 +75,7 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = phoneNumber => {
-  const regex = /^\d{10}$|\d{6}-\d{4}$|^\d{3} \d{3} \d{4}$|^\d{3}-\d{3} \d{4}$|^\d{3}-\d{7}$|^\d{3} \d{3}-\d{4}$|^\(\d{3}\)\d{3} \d{4}$|^\(\d{3}\) \d{3}-\d{4}$|^\d{3}-\d{3}-\d{4}$|^\d{3} \d{7}$/;
+  const regex = /^(\(?\d{3}\)|\d{3})[-\s]?\s?\d{3}[\s-]?\d{4}$/;
   return regex.test(phoneNumber);
 };
 
@@ -89,8 +89,9 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  const regex = /((<\/)\w+(>))/g;
-  return regex.match(elements);
+  const regex = /(\/)\w+/g;
+  const matches = elements.map(element => element.match(regex));
+  return matches;
 };
 
 /* ------------------------------------------------------------------------------------------------
