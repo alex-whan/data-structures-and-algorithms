@@ -132,7 +132,7 @@ const seashells =
   "She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I'm sure she sells seashore shells.";
 
 const findShells = str => {
-  const regex = /[sS]\w*ells/gi;
+  const regex = /[sS]\w*ells/;
   return str.match(regex);
 };
 
