@@ -83,7 +83,8 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = input => {
   const regex = /oct/i;
-  const result = regex.test(input);
+  // const result = regex.test(input);
+  const result = input.match(regex);
   console.log('RESULT??', result);
   return regex.test(input);
 };
@@ -115,7 +116,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = str => {
-  // Solution code here...
+  const regex = /a|e|i|o|u/gi;
+  return str.replace(regex, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -251,7 +253,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
+xdescribe('Testing challenge 5', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
@@ -269,7 +271,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   const lorem =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia vel massa sed egestas. Nunc faucibus iaculis elit, a scelerisque enim condimentum sed. Aenean ac scelerisque sem, et pharetra diam.';
 
@@ -368,7 +370,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   let startString =
     'This is a regex challenge. We are trying to create a hangman phrase where all of the vowels are missing!';
 
