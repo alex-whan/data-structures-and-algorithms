@@ -82,10 +82,7 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = input => {
-  const regex = /oct/i;
-  // const result = regex.test(input);
-  const result = input.match(regex);
-  console.log('RESULT??', result);
+  const regex = /\b[Oo]ct(ober)?\b/i;
   return regex.test(input);
 };
 
