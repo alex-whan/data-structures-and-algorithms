@@ -82,7 +82,7 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = input => {
-  const regex = /\b[Oo]ct(ober)?\b/i;
+  const regex = /\b[Oo]ct(ober)?\b/;
   return regex.test(input);
 };
 
@@ -132,7 +132,8 @@ const seashells =
   "She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I'm sure she sells seashore shells.";
 
 const findShells = str => {
-  // Solution code here...
+  const regex = /[sS]\w*ells/gi;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -251,7 +252,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
@@ -388,7 +389,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return an array of instances of "sells", shells", and "seashells"', () => {
     expect(findShells(seashells)).toStrictEqual([
       'sells',
