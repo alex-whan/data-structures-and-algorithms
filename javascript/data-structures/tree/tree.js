@@ -14,6 +14,22 @@ class BinaryTree {
     this.root = root;
   }
 
+  height() {
+    function _height(root) {
+      if (root === null) {
+        return 0;
+      } else {
+        let leftDepth = _height(root.left);
+        let rightDepth = _height(root.right);
+        let childDepth = leftDepth > rightDepth ? leftDepth : rightDepth;
+
+        return childDepth + 1;
+      }
+    }
+
+    return _height(this.root);
+  }
+
   preOrder() {
     const output = [];
 
@@ -174,8 +190,26 @@ class BinarySearchTree extends BinaryTree {
   }
 }
 
+const maxDepth = root => {
+  if (root === null) {
+    return 0;
+  } else {
+    let leftDepth = maxDepth(root.left);
+    let rightDepth = maxDepth(root.right);
+    let depth;
+
+    if (leftDepth > rightDepth) {
+      depth = leftDepth;
+    } else {
+      depth = rightDepth;
+    }
+    return depth + 1;
+  }
+};
+
 module.exports = {
   Node,
   BinaryTree,
   BinarySearchTree,
+  maxDepth,
 };
